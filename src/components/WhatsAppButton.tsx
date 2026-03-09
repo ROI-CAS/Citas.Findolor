@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, QrCode, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { X, Send } from "lucide-react";
 
 const WHATSAPP_NUMBER = "573186912799";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hola, quiero agendar mi cita para valoración médica del dolor. ¿Cuáles son los horarios disponibles? (Ref: utm_source=website&utm_medium=whatsapp_chat&utm_campaign=landing_findolor)");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hola, quiero agendar mi cita para valoración médica del dolor");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showQR, setShowQR] = useState(false);
 
   return (
     <>
@@ -63,37 +61,8 @@ export function WhatsAppButton() {
                 </div>
               </div>
 
-              {/* QR Code Section */}
-              <AnimatePresence>
-                {showQR && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="bg-white border-t px-4 py-4"
-                  >
-                    <div className="flex flex-col items-center">
-                      <p className="text-sm text-gray-600 mb-3 text-center">
-                        Escanea con tu teléfono
-                      </p>
-                      {/* QR Code as SVG */}
-                      <div className="bg-white p-3 rounded-lg border-2 border-gray-100">
-                        <img 
-                          src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${WHATSAPP_LINK}&color=25D366`}
-                          alt="WhatsApp QR Code"
-                          className="w-32 h-32"
-                        />
-                      </div>
-                      <p className="text-xs text-gray-500 mt-2 text-center">
-                        WhatsApp: 318 6912799
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
               {/* Actions */}
-              <div className="p-4 bg-white border-t space-y-2">
+              <div className="p-4 bg-white border-t">
                 <a 
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -103,13 +72,6 @@ export function WhatsAppButton() {
                   <Send className="w-5 h-5" />
                   Abrir chat
                 </a>
-                <button
-                  onClick={() => setShowQR(!showQR)}
-                  className="flex items-center justify-center gap-2 w-full py-2 text-gray-600 hover:text-[#25D366] font-medium text-sm transition-colors"
-                >
-                  <QrCode className="w-4 h-4" />
-                  {showQR ? "Ocultar QR" : "Ver código QR"}
-                </button>
               </div>
             </motion.div>
           )}
