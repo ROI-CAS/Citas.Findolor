@@ -1,25 +1,35 @@
 
 
-## Plan: Reemplazar widget GHL por botón WhatsApp con UTM tracking
+## Plan: Configurar webhook para ambos formularios MultiStepForm
+
+### Contexto
+Ambos formularios (hero y booking-section) usan el mismo componente `MultiStepForm` con un prop `formSource` que ya distingue entre "hero" (Form 1, arriba) y "booking-section" (Form 2, abajo). Se enviaran los datos al mismo webhook pero incluyendo el campo `formSource` para poder identificar cual formulario convierte mejor.
 
 ### Cambios
 
-1. **Eliminar widget de chat GHL** (`index.html`)
-   - Remover el script de LeadConnector (`widgets.leadconnectorhq.com`) del `<body>`.
+**`src/components/MultiStepForm.tsx`** - Modificar `handleSubmit` para:
+1. Hacer un `fetch` POST al webhook `https://services.leadconnectorhq.com/hooks/6jIqC8dVIpPZSaRRRora/webhook-trigger/37367ef5-1ca4-4cad-acb8-23fbfb8f033a`
+2. Enviar un JSON con todos los campos del formulario: `especialidad`, `entidad`, `nombre`, `telefono`, `email`, `mensaje`, y `formSource` (que sera "hero" o "booking-section")
+3. Resolver los labels legibles de especialidad y entidad antes de enviar (en vez de los IDs internos)
+4. El fetch sera fire-and-forget (no bloquear la navegacion a /gracias si falla el webhook)
+5. Mantener la redireccion a `/gracias` despues de disparar el webhook
 
-2. **Agregar WhatsApp button a IndexV2** (`src/pages/IndexV2.tsx`)
-   - Importar `WhatsAppButton` con lazy loading y agregarlo al JSX con `<Suspense>`.
+### Payload que se enviara al webhook
 
-3. **Agregar UTM al link de WhatsApp** (`src/components/WhatsAppButton.tsx`)
-   - Modificar el mensaje de WhatsApp para incluir parámetros UTM que GHL pueda rastrear.
-   - El link quedará algo como:
-     ```
-     https://wa.me/573186912799?text=Hola, quiero agendar mi cita... (Ref: utm_source=website&utm_medium=chat&utm_campaign=landing_findolor)
-     ```
-   - Esto permite que al recibir el mensaje en GHL, el equipo pueda identificar que el lead viene del botón flotante de la landing page.
+```json
+{
+  "formSource": "hero",
+  "especialidad": "Medicina del dolor",
+  "entidad": "Allianz",
+  "nombre": "Juan Perez",
+  "telefono": "3001234567",
+  "email": "juan@email.com",
+  "mensaje": "Tengo dolor de espalda"
+}
+```
+
+El campo `formSource` tendra valor `"hero"` para el formulario de arriba y `"booking-section"` para el de abajo, lo que permite comparar en el CRM cual formulario genera mas conversiones.
 
 ### Archivos a modificar
-- `index.html` — eliminar script GHL
-- `src/pages/IndexV2.tsx` — agregar WhatsAppButton
-- `src/components/WhatsAppButton.tsx` — agregar UTM al mensaje
+- `src/components/MultiStepForm.tsx` (unica modificacion)
 
