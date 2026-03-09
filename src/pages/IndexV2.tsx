@@ -122,6 +122,9 @@ const IndexV2 = () => {
       <Suspense fallback={null}>
         <ExitIntentPopup />
       </Suspense>
+      <Suspense fallback={null}>
+        <WhatsAppButton />
+      </Suspense>
     </div>
   );
 };
