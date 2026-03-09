@@ -18,6 +18,7 @@ const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.
 const ClickToCallButton = lazy(() => import("@/components/ClickToCallButton").then(m => ({ default: m.ClickToCallButton })));
 const LiveCounter = lazy(() => import("@/components/LiveCounter").then(m => ({ default: m.LiveCounter })));
 const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup").then(m => ({ default: m.ExitIntentPopup })));
+const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m => ({ default: m.WhatsAppButton })));
 
 const SectionFallback = () => <div className="py-20" />;
 
