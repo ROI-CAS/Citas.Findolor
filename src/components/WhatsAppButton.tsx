@@ -67,6 +67,11 @@ export function WhatsAppButton() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window.gtag === 'function') {
+                      window.gtag('event', 'conversion', {'send_to': 'AW-853236324/yt3wCJGDgoYcEOS07ZYD'});
+                    }
+                  }}
                   className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-full transition-colors"
                 >
                   <Send className="w-5 h-5" />
