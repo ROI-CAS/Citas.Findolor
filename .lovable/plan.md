@@ -1,35 +1,50 @@
 
 
-## Plan: Configurar webhook para ambos formularios MultiStepForm
+## Plan: Implementar tabs "Te llamamos" / "Prefiero elegir" con popup de calendario al 80%
 
-### Contexto
-Ambos formularios (hero y booking-section) usan el mismo componente `MultiStepForm` con un prop `formSource` que ya distingue entre "hero" (Form 1, arriba) y "booking-section" (Form 2, abajo). Se enviaran los datos al mismo webhook pero incluyendo el campo `formSource` para poder identificar cual formulario convierte mejor.
+### Referencia
+La segunda imagen muestra el diseño anterior con dos tabs en la parte superior del formulario: **"Te llamamos"** (muestra el MultiStepForm) y **"Prefiero elegir"** (muestra un panel informativo con botón "Abrir Calendario" que abre el popup). Al hacer clic en "Abrir Calendario", se abre un Dialog al **80% de ancho** con el iframe del calendario GHL y altura del **85vh**.
 
 ### Cambios
 
-**`src/components/MultiStepForm.tsx`** - Modificar `handleSubmit` para:
-1. Hacer un `fetch` POST al webhook `https://services.leadconnectorhq.com/hooks/6jIqC8dVIpPZSaRRRora/webhook-trigger/37367ef5-1ca4-4cad-acb8-23fbfb8f033a`
-2. Enviar un JSON con todos los campos del formulario: `especialidad`, `entidad`, `nombre`, `telefono`, `email`, `mensaje`, y `formSource` (que sera "hero" o "booking-section")
-3. Resolver los labels legibles de especialidad y entidad antes de enviar (en vez de los IDs internos)
-4. El fetch sera fire-and-forget (no bloquear la navegacion a /gracias si falla el webhook)
-5. Mantener la redireccion a `/gracias` despues de disparar el webhook
+**Crear `src/components/BookingTabs.tsx`** — componente reutilizable:
+- Dos tabs estilo pill: "Te llamamos" (activo por defecto, fondo primary) y "Prefiero elegir" (con icono CalendarDays).
+- Tab "Te llamamos" → renderiza `<MultiStepForm />`.
+- Tab "Prefiero elegir" → panel con icono de calendario, título "Elige tu horario ideal", descripción, 3 badges (Confirmación inmediata, Horarios flexibles, Sin filas ni esperas), y botón verde "Abrir Calendario →" que abre un `Dialog`.
+- El `Dialog` usa `max-w-[80vw]` y `max-h-[85vh]` con iframe del calendario GHL a `height: 80vh`.
+- Recibe prop `formSource` para pasar al MultiStepForm.
 
-### Payload que se enviara al webhook
+**`src/components/HeroV2.tsx`**:
+- Reemplazar `HeroTabs` por el nuevo `<BookingTabs formSource="hero" />`.
+- Eliminar el botón suelto de calendario y la constante `BOOKING_URL` local.
 
-```json
-{
-  "formSource": "hero",
-  "especialidad": "Medicina del dolor",
-  "entidad": "Allianz",
-  "nombre": "Juan Perez",
-  "telefono": "3001234567",
-  "email": "juan@email.com",
-  "mensaje": "Tengo dolor de espalda"
-}
+**`src/pages/IndexV2.tsx`**:
+- Reemplazar `BottomBookingTabs` por `<BookingTabs formSource="booking-section" />`.
+- Eliminar el botón suelto y la constante `BOOKING_URL` local.
+
+### Diseño del tab "Prefiero elegir"
+```text
+┌──────────────────────────────────────┐
+│  📅  Elige tu horario ideal          │
+│  Visualiza nuestra disponibilidad... │
+│                                      │
+│  ✓ Confirmación   📅 Horarios   ✓ Sin│
+│    inmediata        flexibles    filas│
+│                                      │
+│  ┌──────────────────────────────┐    │
+│  │   Abrir Calendario  →        │    │
+│  └──────────────────────────────┘    │
+└──────────────────────────────────────┘
 ```
 
-El campo `formSource` tendra valor `"hero"` para el formulario de arriba y `"booking-section"` para el de abajo, lo que permite comparar en el CRM cual formulario genera mas conversiones.
+### Dialog del calendario
+- Ancho: `max-w-[80vw]`
+- Altura máxima: `max-h-[85vh]`
+- Iframe: `width: 100%`, `height: 80vh`, `border: none`
+- Padding: `p-0` para máximo espacio al iframe
 
 ### Archivos a modificar
-- `src/components/MultiStepForm.tsx` (unica modificacion)
+- Crear: `src/components/BookingTabs.tsx`
+- Editar: `src/components/HeroV2.tsx`
+- Editar: `src/pages/IndexV2.tsx`
 
