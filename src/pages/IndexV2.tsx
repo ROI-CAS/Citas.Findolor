@@ -5,7 +5,7 @@ import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
 import { MultiStepForm } from "@/components/MultiStepForm";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // Lazy load below-fold components
 const SocialProofV2 = lazy(() => import("@/components/SocialProofV2").then(m => ({ default: m.SocialProofV2 })));
@@ -24,10 +24,10 @@ const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m =
 const SectionFallback = () => <div className="py-20" />;
 
 function BottomBookingTabs() {
-  const [activeTab, setActiveTab] = useState("call");
+  const [showCalendar, setShowCalendar] = useState(false);
 
   useEffect(() => {
-    if (activeTab === "calendar") {
+    if (showCalendar) {
       const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
       if (!existingScript) {
         const script = document.createElement("script");
@@ -37,34 +37,38 @@ function BottomBookingTabs() {
         document.body.appendChild(script);
       }
     }
-  }, [activeTab]);
+  }, [showCalendar]);
 
   return (
-    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-      <TabsList className="grid grid-cols-2 w-full mb-4 h-auto p-1">
-        <TabsTrigger value="call" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-          <Phone className="w-3.5 h-3.5" />
-          Te llamamos
-        </TabsTrigger>
-        <TabsTrigger value="calendar" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-          <CalendarDays className="w-3.5 h-3.5" />
-          Elegir horario
-        </TabsTrigger>
-      </TabsList>
-      <TabsContent value="call" className="mt-0">
-        <MultiStepForm formSource="booking-section" />
-      </TabsContent>
-      <TabsContent value="calendar" className="mt-0">
-        {activeTab === "calendar" && (
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
-            style={{ width: "100%", minHeight: "500px", border: "none", overflow: "hidden" }}
-            scrolling="no"
-            title="Calendario de citas Findolor"
-          />
-        )}
-      </TabsContent>
-    </Tabs>
+    <>
+      <MultiStepForm formSource="booking-section" />
+      <button
+        type="button"
+        onClick={() => setShowCalendar(true)}
+        className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+      >
+        <CalendarDays className="w-4 h-4" />
+        Prefiero elegir horario en el calendario
+      </button>
+      <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
+        <DialogContent className="max-w-[95vw] sm:max-w-lg p-0 overflow-hidden">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle className="flex items-center gap-2 text-base">
+              <CalendarDays className="w-5 h-5 text-primary" />
+              Agenda tu valoración médica
+            </DialogTitle>
+          </DialogHeader>
+          <div className="px-4 pb-4">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
+              style={{ width: "100%", minHeight: "600px", border: "none", overflow: "hidden" }}
+              scrolling="no"
+              title="Calendario de citas Findolor"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
