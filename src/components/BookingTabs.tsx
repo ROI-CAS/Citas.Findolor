@@ -10,7 +10,7 @@ import {
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5";
 
 interface BookingTabsProps {
-  formSource: string;
+  formSource: "hero" | "booking-section";
 }
 
 export function BookingTabs({ formSource }: BookingTabsProps) {
