@@ -17,7 +17,7 @@ const trustPoints = [{
   text: "+20 años de experiencia"
 }];
 
-function BookingTabs({ formSource }: { formSource: string }) {
+function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" }) {
   const [activeTab, setActiveTab] = useState("call");
 
   useEffect(() => {
