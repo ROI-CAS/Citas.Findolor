@@ -108,6 +108,10 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        "pulse-subtle": {
+          "0%, 100%": { boxShadow: "0 0 0 0 hsla(var(--accent) / 0.4)" },
+          "50%": { boxShadow: "0 0 0 6px hsla(var(--accent) / 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
