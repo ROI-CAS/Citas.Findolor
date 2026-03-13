@@ -45,7 +45,7 @@ function BottomBookingTabs() {
       <button
         type="button"
         onClick={() => setShowCalendar(true)}
-        className="w-full mt-3 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base font-semibold shadow-md transition-all duration-200"
+        className="w-full mt-3 flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200 animate-pulse-subtle"
       >
         <CalendarDays className="w-5 h-5" />
         📅 Prefiero elegir horario en el calendario
