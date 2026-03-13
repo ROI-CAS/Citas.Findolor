@@ -1,11 +1,10 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { Phone, CalendarDays } from "lucide-react";
 import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
 import { MultiStepForm } from "@/components/MultiStepForm";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // Lazy load below-fold components
 const SocialProofV2 = lazy(() => import("@/components/SocialProofV2").then(m => ({ default: m.SocialProofV2 })));
@@ -23,51 +22,20 @@ const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m =
 
 const SectionFallback = () => <div className="py-20" />;
 
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5";
+
 function BottomBookingTabs() {
-  const [showCalendar, setShowCalendar] = useState(false);
-
-  useEffect(() => {
-    if (showCalendar) {
-      const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
-      if (!existingScript) {
-        const script = document.createElement("script");
-        script.src = "https://link.msgsndr.com/js/form_embed.js";
-        script.type = "text/javascript";
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    }
-  }, [showCalendar]);
-
   return (
     <>
       <MultiStepForm formSource="booking-section" />
       <button
         type="button"
-        onClick={() => setShowCalendar(true)}
+        onClick={() => window.open(BOOKING_URL, "_blank")}
         className="w-full mt-3 flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200 animate-pulse-subtle"
       >
         <CalendarDays className="w-5 h-5" />
         📅 Prefiero elegir horario en el calendario
       </button>
-      <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
-        <DialogContent className="max-w-[97vw] sm:max-w-3xl max-h-[92vh] overflow-y-auto p-0">
-          <DialogHeader className="p-4 pb-0">
-            <DialogTitle className="flex items-center gap-2 text-base">
-              <CalendarDays className="w-5 h-5 text-primary" />
-              Agenda tu valoración médica
-            </DialogTitle>
-          </DialogHeader>
-          <div className="px-4 pb-4">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
-              style={{ width: "100%", minHeight: "750px", border: "none", overflow: "hidden" }}
-              scrolling="no"
-              title="Calendario de citas Findolor"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
