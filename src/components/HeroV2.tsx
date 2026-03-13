@@ -39,13 +39,13 @@ function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" })
       <button
         type="button"
         onClick={() => setShowCalendar(true)}
-        className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+        className="w-full mt-3 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base font-semibold shadow-md transition-all duration-200"
       >
-        <CalendarDays className="w-4 h-4" />
-        Prefiero elegir horario en el calendario
+        <CalendarDays className="w-5 h-5" />
+        📅 Prefiero elegir horario en el calendario
       </button>
       <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
-        <DialogContent className="max-w-[95vw] sm:max-w-lg p-0 overflow-hidden">
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto p-0">
           <DialogHeader className="p-4 pb-0">
             <DialogTitle className="flex items-center gap-2 text-base">
               <CalendarDays className="w-5 h-5 text-primary" />
@@ -55,7 +55,7 @@ function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" })
           <div className="px-4 pb-4">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
-              style={{ width: "100%", minHeight: "600px", border: "none", overflow: "hidden" }}
+              style={{ width: "100%", minHeight: "700px", border: "none", overflow: "hidden" }}
               scrolling="no"
               title="Calendario de citas Findolor"
             />
