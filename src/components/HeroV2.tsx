@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, ChevronDown, Phone } from "lucide-react";
+import { Shield, Clock, Award, ChevronDown, Phone, CalendarDays } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MultiStepForm } from "./MultiStepForm";
 import heroImage from "@/assets/hero-findolor-bg.jpg";
 import heroImageMobile from "@/assets/hero-findolor-mobile.jpg";
@@ -14,6 +16,56 @@ const trustPoints = [{
   icon: Award,
   text: "+20 años de experiencia"
 }];
+
+function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" }) {
+  const [activeTab, setActiveTab] = useState("call");
+
+  useEffect(() => {
+    if (activeTab === "calendar") {
+      const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://link.msgsndr.com/js/form_embed.js";
+        script.type = "text/javascript";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+  }, [activeTab]);
+
+  return (
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      <TabsList className="grid grid-cols-2 w-full mb-4 h-auto p-1">
+        <TabsTrigger value="call" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <Phone className="w-3.5 h-3.5" />
+          Te llamamos
+        </TabsTrigger>
+        <TabsTrigger value="calendar" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <CalendarDays className="w-3.5 h-3.5" />
+          Elegir horario
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="call" className="mt-0">
+        <MultiStepForm formSource={formSource} />
+      </TabsContent>
+      <TabsContent value="calendar" className="mt-0">
+        {activeTab === "calendar" && (
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
+            style={{ width: "100%", minHeight: "500px", border: "none", overflow: "hidden" }}
+            scrolling="no"
+            title="Calendario de citas Findolor"
+          />
+        )}
+      </TabsContent>
+    </Tabs>
+  );
+}
+
+function HeroTabs() {
+  return <BookingTabs formSource="hero" />;
+}
+
 export function HeroV2() {
   const scrollToContent = () => {
     window.scrollTo({
@@ -118,7 +170,7 @@ export function HeroV2() {
                   </div>
                   <h3 className="text-lg font-bold text-foreground">Agenda tu valoración médica</h3>
                 </div>
-                <MultiStepForm formSource="hero" />
+                <HeroTabs />
                 <p className="text-center text-xs text-muted-foreground mt-2">
                   🔒 Tu información está protegida. Recibirás confirmación por WhatsApp y correo electrónico.
                 </p>

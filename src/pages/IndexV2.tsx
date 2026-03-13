@@ -1,10 +1,11 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import { Phone } from "lucide-react";
+import { Phone, CalendarDays } from "lucide-react";
 import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
 import { MultiStepForm } from "@/components/MultiStepForm";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Lazy load below-fold components
 const SocialProofV2 = lazy(() => import("@/components/SocialProofV2").then(m => ({ default: m.SocialProofV2 })));
@@ -21,6 +22,51 @@ const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup").then(m
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m => ({ default: m.WhatsAppButton })));
 
 const SectionFallback = () => <div className="py-20" />;
+
+function BottomBookingTabs() {
+  const [activeTab, setActiveTab] = useState("call");
+
+  useEffect(() => {
+    if (activeTab === "calendar") {
+      const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://link.msgsndr.com/js/form_embed.js";
+        script.type = "text/javascript";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+  }, [activeTab]);
+
+  return (
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      <TabsList className="grid grid-cols-2 w-full mb-4 h-auto p-1">
+        <TabsTrigger value="call" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <Phone className="w-3.5 h-3.5" />
+          Te llamamos
+        </TabsTrigger>
+        <TabsTrigger value="calendar" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <CalendarDays className="w-3.5 h-3.5" />
+          Elegir horario
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="call" className="mt-0">
+        <MultiStepForm formSource="booking-section" />
+      </TabsContent>
+      <TabsContent value="calendar" className="mt-0">
+        {activeTab === "calendar" && (
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
+            style={{ width: "100%", minHeight: "500px", border: "none", overflow: "hidden" }}
+            scrolling="no"
+            title="Calendario de citas Findolor"
+          />
+        )}
+      </TabsContent>
+    </Tabs>
+  );
+}
 
 const IndexV2 = () => {
   const { hash } = useLocation();
@@ -97,7 +143,7 @@ const IndexV2 = () => {
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                 Nuestro equipo médico se comunicará contigo para orientarte y agendar tu valoración médica en el menor tiempo posible.
               </p>
-              <MultiStepForm formSource="booking-section" />
+              <BottomBookingTabs />
               <p className="text-center text-xs text-muted-foreground mt-3">
                 🔒 Tu información está protegida. Recibirás confirmación por WhatsApp y correo electrónico.
               </p>
