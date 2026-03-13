@@ -1,10 +1,10 @@
 import { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import { Phone, CalendarDays } from "lucide-react";
+import { Phone } from "lucide-react";
 import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
-import { MultiStepForm } from "@/components/MultiStepForm";
+import { BookingTabs } from "@/components/BookingTabs";
 
 // Lazy load below-fold components
 const SocialProofV2 = lazy(() => import("@/components/SocialProofV2").then(m => ({ default: m.SocialProofV2 })));

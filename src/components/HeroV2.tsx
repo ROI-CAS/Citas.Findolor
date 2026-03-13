@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, ChevronDown, Phone, CalendarDays } from "lucide-react";
-import { MultiStepForm } from "./MultiStepForm";
+import { Shield, Clock, Award, ChevronDown, Phone } from "lucide-react";
+import { BookingTabs } from "./BookingTabs";
 import heroImage from "@/assets/hero-findolor-bg.jpg";
 import heroImageMobile from "@/assets/hero-findolor-mobile.jpg";
 const logo = "/images/findolor-logo.webp";
@@ -14,24 +14,6 @@ const trustPoints = [{
   icon: Award,
   text: "+20 años de experiencia"
 }];
-
-const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5";
-
-function HeroTabs() {
-  return (
-    <>
-      <MultiStepForm formSource="hero" />
-      <button
-        type="button"
-        onClick={() => window.open(BOOKING_URL, "_blank")}
-        className="w-full mt-3 flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200 animate-pulse-subtle"
-      >
-        <CalendarDays className="w-5 h-5" />
-        📅 Prefiero elegir horario en el calendario
-      </button>
-    </>
-  );
-}
 
 export function HeroV2() {
   const scrollToContent = () => {
