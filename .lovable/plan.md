@@ -1,35 +1,31 @@
 
 
-## Plan: Configurar webhook para ambos formularios MultiStepForm
+## Plan: Mejorar botón de calendario y ampliar modal
 
-### Contexto
-Ambos formularios (hero y booking-section) usan el mismo componente `MultiStepForm` con un prop `formSource` que ya distingue entre "hero" (Form 1, arriba) y "booking-section" (Form 2, abajo). Se enviaran los datos al mismo webhook pero incluyendo el campo `formSource` para poder identificar cual formulario convierte mejor.
+### Problemas identificados
+1. **Botón "Prefiero elegir horario"** — tiene poco contraste, borde sutil y fondo casi transparente. No destaca como CTA.
+2. **Modal del calendario** — `sm:max-w-lg` (512px) es angosto para el widget de GHL que necesita más espacio.
 
 ### Cambios
 
-**`src/components/MultiStepForm.tsx`** - Modificar `handleSubmit` para:
-1. Hacer un `fetch` POST al webhook `https://services.leadconnectorhq.com/hooks/6jIqC8dVIpPZSaRRRora/webhook-trigger/37367ef5-1ca4-4cad-acb8-23fbfb8f033a`
-2. Enviar un JSON con todos los campos del formulario: `especialidad`, `entidad`, `nombre`, `telefono`, `email`, `mensaje`, y `formSource` (que sera "hero" o "booking-section")
-3. Resolver los labels legibles de especialidad y entidad antes de enviar (en vez de los IDs internos)
-4. El fetch sera fire-and-forget (no bloquear la navegacion a /gracias si falla el webhook)
-5. Mantener la redireccion a `/gracias` despues de disparar el webhook
+**`src/components/HeroV2.tsx`** — `BookingTabs`:
+- **Botón**: Cambiar de estilo ghost/outline a un estilo más llamativo con fondo sólido `bg-secondary text-secondary-foreground` (verde), padding más alto (`py-3`), texto `text-base font-semibold`, y sombra sutil. Agregar emoji o icono más visible.
+- **Dialog**: Ampliar de `sm:max-w-lg` a `sm:max-w-2xl` (672px) y agregar `max-h-[90vh] overflow-y-auto` para que el iframe tenga suficiente espacio y sea scrollable si es necesario. Aumentar `minHeight` del iframe a `700px`.
 
-### Payload que se enviara al webhook
+**`src/pages/IndexV2.tsx`** — `BottomBookingTabs`:
+- Mismos cambios exactos al botón y al Dialog.
 
-```json
-{
-  "formSource": "hero",
-  "especialidad": "Medicina del dolor",
-  "entidad": "Allianz",
-  "nombre": "Juan Perez",
-  "telefono": "3001234567",
-  "email": "juan@email.com",
-  "mensaje": "Tengo dolor de espalda"
-}
+### Detalle del botón (ambos archivos)
+```
+className="w-full mt-3 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-secondary hover:bg-secondary/90 text-white text-base font-semibold shadow-md transition-all duration-200"
 ```
 
-El campo `formSource` tendra valor `"hero"` para el formulario de arriba y `"booking-section"` para el de abajo, lo que permite comparar en el CRM cual formulario genera mas conversiones.
+### Detalle del Dialog (ambos archivos)
+```
+className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto p-0"
+```
 
 ### Archivos a modificar
-- `src/components/MultiStepForm.tsx` (unica modificacion)
+- `src/components/HeroV2.tsx`
+- `src/pages/IndexV2.tsx`
 
