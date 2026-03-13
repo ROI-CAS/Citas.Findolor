@@ -119,7 +119,7 @@ export function HeroV2() {
                   </div>
                   <h3 className="text-lg font-bold text-foreground">Agenda tu valoración médica</h3>
                 </div>
-                <HeroTabs />
+                <BookingTabs formSource="hero" />
                 <p className="text-center text-xs text-muted-foreground mt-2">
                   🔒 Tu información está protegida. Recibirás confirmación por WhatsApp y correo electrónico.
                 </p>

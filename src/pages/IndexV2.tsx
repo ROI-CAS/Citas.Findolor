@@ -22,22 +22,8 @@ const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m =
 
 const SectionFallback = () => <div className="py-20" />;
 
-const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5";
-
 function BottomBookingTabs() {
-  return (
-    <>
-      <MultiStepForm formSource="booking-section" />
-      <button
-        type="button"
-        onClick={() => window.open(BOOKING_URL, "_blank")}
-        className="w-full mt-3 flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200 animate-pulse-subtle"
-      >
-        <CalendarDays className="w-5 h-5" />
-        📅 Prefiero elegir horario en el calendario
-      </button>
-    </>
-  );
+  return <BookingTabs formSource="booking-section" />;
 }
 
 const IndexV2 = () => {
