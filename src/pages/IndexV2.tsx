@@ -23,6 +23,51 @@ const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m =
 
 const SectionFallback = () => <div className="py-20" />;
 
+function BottomBookingTabs() {
+  const [activeTab, setActiveTab] = useState("call");
+
+  useEffect(() => {
+    if (activeTab === "calendar") {
+      const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://link.msgsndr.com/js/form_embed.js";
+        script.type = "text/javascript";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+  }, [activeTab]);
+
+  return (
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      <TabsList className="grid grid-cols-2 w-full mb-4 h-auto p-1">
+        <TabsTrigger value="call" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <Phone className="w-3.5 h-3.5" />
+          Te llamamos
+        </TabsTrigger>
+        <TabsTrigger value="calendar" className="flex items-center gap-1.5 py-2.5 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <CalendarDays className="w-3.5 h-3.5" />
+          Elegir horario
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="call" className="mt-0">
+        <MultiStepForm formSource="booking-section" />
+      </TabsContent>
+      <TabsContent value="calendar" className="mt-0">
+        {activeTab === "calendar" && (
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
+            style={{ width: "100%", minHeight: "500px", border: "none", overflow: "hidden" }}
+            scrolling="no"
+            title="Calendario de citas Findolor"
+          />
+        )}
+      </TabsContent>
+    </Tabs>
+  );
+}
+
 const IndexV2 = () => {
   const { hash } = useLocation();
 
