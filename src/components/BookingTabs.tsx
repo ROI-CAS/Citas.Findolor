@@ -47,38 +47,40 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
         </button>
       </div>
 
-      {/* Tab content */}
-      {activeTab === "call" ? (
-        <MultiStepForm formSource={formSource} />
-      ) : (
-        <div className="text-center py-4">
-          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-            <CalendarDays className="w-7 h-7 text-primary" />
+      {/* Tab content - fixed height container */}
+      <div className="min-h-[340px]">
+        {activeTab === "call" ? (
+          <MultiStepForm formSource={formSource} />
+        ) : (
+          <div className="text-center py-4 flex flex-col items-center justify-center min-h-[340px]">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <CalendarDays className="w-7 h-7 text-primary" />
+            </div>
+            <h4 className="text-lg font-bold text-foreground mb-1">Elige tu horario ideal</h4>
+            <p className="text-sm text-muted-foreground mb-4">
+              Visualiza nuestra disponibilidad y selecciona el día y hora que mejor se ajuste a ti.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mb-5">
+              <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
+                <CheckCircle className="w-3.5 h-3.5 text-primary" /> Confirmación inmediata
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
+                <CalendarDays className="w-3.5 h-3.5 text-primary" /> Horarios flexibles
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
+                <CheckCircle className="w-3.5 h-3.5 text-primary" /> Sin filas ni esperas
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowCalendar(true)}
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200"
+            >
+              Abrir Calendario <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
-          <h4 className="text-lg font-bold text-foreground mb-1">Elige tu horario ideal</h4>
-          <p className="text-sm text-muted-foreground mb-4">
-            Visualiza nuestra disponibilidad y selecciona el día y hora que mejor se ajuste a ti.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 mb-5">
-            <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
-              <CheckCircle className="w-3.5 h-3.5 text-primary" /> Confirmación inmediata
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
-              <CalendarDays className="w-3.5 h-3.5 text-primary" /> Horarios flexibles
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs bg-muted px-2.5 py-1 rounded-full font-medium">
-              <CheckCircle className="w-3.5 h-3.5 text-primary" /> Sin filas ni esperas
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setShowCalendar(true)}
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent text-accent-foreground text-base font-bold shadow-lg border-2 border-accent/80 hover:scale-[1.02] hover:shadow-xl transition-all duration-200"
-          >
-            Abrir Calendario <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Calendar Dialog */}
       <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
