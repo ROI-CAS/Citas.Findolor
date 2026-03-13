@@ -98,7 +98,7 @@ const IndexV2 = () => {
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                 Nuestro equipo médico se comunicará contigo para orientarte y agendar tu valoración médica en el menor tiempo posible.
               </p>
-              <MultiStepForm formSource="booking-section" />
+              <BottomBookingTabs />
               <p className="text-center text-xs text-muted-foreground mt-3">
                 🔒 Tu información está protegida. Recibirás confirmación por WhatsApp y correo electrónico.
               </p>
