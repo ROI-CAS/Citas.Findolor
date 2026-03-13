@@ -61,7 +61,7 @@ function BottomBookingTabs() {
           <div className="px-4 pb-4">
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/AxHFQX42P4lbkb5Invw5"
-              style={{ width: "100%", minHeight: "600px", border: "none", overflow: "hidden" }}
+              style={{ width: "100%", minHeight: "700px", border: "none", overflow: "hidden" }}
               scrolling="no"
               title="Calendario de citas Findolor"
             />
