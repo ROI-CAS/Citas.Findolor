@@ -39,10 +39,10 @@ function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" })
       <button
         type="button"
         onClick={() => setShowCalendar(true)}
-        className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+        className="w-full mt-3 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base font-semibold shadow-md transition-all duration-200"
       >
-        <CalendarDays className="w-4 h-4" />
-        Prefiero elegir horario en el calendario
+        <CalendarDays className="w-5 h-5" />
+        📅 Prefiero elegir horario en el calendario
       </button>
       <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
         <DialogContent className="max-w-[95vw] sm:max-w-lg p-0 overflow-hidden">
