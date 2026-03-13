@@ -45,7 +45,7 @@ function BookingTabs({ formSource }: { formSource: "hero" | "booking-section" })
         📅 Prefiero elegir horario en el calendario
       </button>
       <Dialog open={showCalendar} onOpenChange={setShowCalendar}>
-        <DialogContent className="max-w-[95vw] sm:max-w-lg p-0 overflow-hidden">
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[90vh] overflow-y-auto p-0">
           <DialogHeader className="p-4 pb-0">
             <DialogTitle className="flex items-center gap-2 text-base">
               <CalendarDays className="w-5 h-5 text-primary" />
