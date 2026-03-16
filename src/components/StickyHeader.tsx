@@ -57,41 +57,66 @@ export function StickyHeader() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-2 md:gap-3">
-                  {/* Click-to-Call - visible on mobile */}
-                  <a
+                  {/* Click-to-Call - mobile */}
+                  <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
                     onClick={() => (window as any).gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
-                    className="md:hidden"
+                    className="md:hidden relative"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
                   >
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-10 px-3 border-primary text-primary hover:bg-primary/10 rounded-xl"
-                    >
+                    <div className="relative h-10 w-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-soft">
                       <Phone className="w-4 h-4" />
-                    </Button>
-                  </a>
+                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full animate-ping" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full" />
+                    </div>
+                  </motion.a>
 
                   {/* Desktop phone */}
-                  <a
+                  <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
                     onClick={() => (window as any).gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
-                    className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
                   >
-                    <Phone className="w-4 h-4" />
+                    <div className="relative">
+                      <Phone className="w-4 h-4" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full animate-ping" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full" />
+                    </div>
                     <span>318 691 2799</span>
-                  </a>
+                  </motion.a>
 
                   {/* CTA Button */}
-                  <a href="#agendar">
+                  <motion.a
+                    href="#agendar"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2, duration: 0.3 }}
+                    className="relative"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
                     <Button
-                      className="btn-cta h-10 md:h-11 px-4 md:px-6 rounded-xl text-sm md:text-base font-semibold"
+                      className="btn-cta h-10 md:h-11 px-4 md:px-6 rounded-xl text-sm md:text-base font-semibold animate-pulse-subtle"
                     >
                       <Calendar className="w-4 h-4 mr-2" />
                       <span className="hidden sm:inline">Agendar Cita</span>
                       <span className="sm:hidden">Agendar</span>
                     </Button>
-                  </a>
+                    {/* Urgency micro-badge */}
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.5, y: 4 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ delay: 0.8, type: "spring", stiffness: 300 }}
+                      className="absolute -top-2.5 -right-2 bg-destructive text-destructive-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none shadow-md whitespace-nowrap"
+                    >
+                      Hoy
+                    </motion.span>
+                  </motion.a>
                 </div>
               </div>
             </div>
