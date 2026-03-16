@@ -1,0 +1,121 @@
+[93m[4mUnused files[24m[39m (61)
+src/App.css                           
+src/components/BenefitsV3.tsx         
+src/components/BookingCalendar.tsx    
+src/components/ConditionsGrid.tsx     
+src/components/ContactForm.tsx        
+src/components/CTASection.tsx         
+src/components/EmpathySection.tsx     
+src/components/FinalCTAV3.tsx         
+src/components/GuaranteeSection.tsx   
+src/components/HeroSection.tsx        
+src/components/HeroV3.tsx             
+src/components/MultiStepFormV3.tsx    
+src/components/NavLink.tsx            
+src/components/QuickBenefits.tsx      
+src/components/SocialProofV3.tsx      
+src/components/StepsSection.tsx       
+src/components/TestimonialCardV2.tsx  
+src/components/TestimonialsSection.tsx
+src/components/TestimonialsV3.tsx     
+src/components/TrustBar.tsx           
+src/components/VersionSwitcher.tsx    
+src/components/VersionSwitcherV3.tsx  
+src/components/WhyChooseUs.tsx        
+src/pages/Index.tsx                   
+src/pages/IndexV3.tsx                 
+src/components/ui/alert-dialog.tsx    
+src/components/ui/alert.tsx           
+src/components/ui/aspect-ratio.tsx    
+src/components/ui/avatar.tsx          
+src/components/ui/badge.tsx           
+src/components/ui/breadcrumb.tsx      
+src/components/ui/calendar.tsx        
+src/components/ui/carousel.tsx        
+src/components/ui/chart.tsx           
+src/components/ui/collapsible.tsx     
+src/components/ui/command.tsx         
+src/components/ui/context-menu.tsx    
+src/components/ui/drawer.tsx          
+src/components/ui/dropdown-menu.tsx   
+src/components/ui/form.tsx            
+src/components/ui/hover-card.tsx      
+src/components/ui/input-otp.tsx       
+src/components/ui/menubar.tsx         
+src/components/ui/navigation-menu.tsx 
+src/components/ui/pagination.tsx      
+src/components/ui/popover.tsx         
+src/components/ui/progress.tsx        
+src/components/ui/radio-group.tsx     
+src/components/ui/resizable.tsx       
+src/components/ui/scroll-area.tsx     
+src/components/ui/select.tsx          
+src/components/ui/separator.tsx       
+src/components/ui/sheet.tsx           
+src/components/ui/sidebar.tsx         
+src/components/ui/skeleton.tsx        
+src/components/ui/slider.tsx          
+src/components/ui/switch.tsx          
+src/components/ui/table.tsx           
+src/components/ui/toggle-group.tsx    
+src/components/ui/toggle.tsx          
+src/components/ui/use-toast.ts        
+[93m[4mUnused dependencies[24m[39m (30)
+@hookform/resolvers              package.json:16:6
+@radix-ui/react-alert-dialog     package.json:18:6
+@radix-ui/react-aspect-ratio     package.json:19:6
+@radix-ui/react-avatar           package.json:20:6
+@radix-ui/react-collapsible      package.json:22:6
+@radix-ui/react-context-menu     package.json:23:6
+@radix-ui/react-dropdown-menu    package.json:25:6
+@radix-ui/react-hover-card       package.json:26:6
+@radix-ui/react-menubar          package.json:28:6
+@radix-ui/react-navigation-menu  package.json:29:6
+@radix-ui/react-popover          package.json:30:6
+@radix-ui/react-progress         package.json:31:6
+@radix-ui/react-radio-group      package.json:32:6
+@radix-ui/react-scroll-area      package.json:33:6
+@radix-ui/react-select           package.json:34:6
+@radix-ui/react-separator        package.json:35:6
+@radix-ui/react-slider           package.json:36:6
+@radix-ui/react-switch           package.json:38:6
+@radix-ui/react-toggle           package.json:41:6
+@radix-ui/react-toggle-group     package.json:42:6
+cmdk                             package.json:47:6
+date-fns                         package.json:48:6
+embla-carousel-react             package.json:49:6
+input-otp                        package.json:51:6
+react-day-picker                 package.json:55:6
+react-hook-form                  package.json:57:6
+react-resizable-panels           package.json:58:6
+recharts                         package.json:60:6
+vaul                             package.json:64:6
+zod                              package.json:65:6
+[93m[4mUnused devDependencies[24m[39m (2)
+@tailwindcss/typography  package.json:69:6
+@testing-library/react   package.json:71:6
+[93m[4mUnused exports[24m[39m (20)
+toast              src/components/ui/sonner.tsx:27:19      
+Tooltip            src/components/ui/tooltip.tsx:28:10     
+TooltipTrigger     src/components/ui/tooltip.tsx:28:19     
+TooltipContent     src/components/ui/tooltip.tsx:28:35     
+getBogotaDay       src/context/AppointmentContext.tsx:35:14
+DialogPortal       src/components/ui/dialog.tsx:86:3       
+DialogOverlay      src/components/ui/dialog.tsx:87:3       
+DialogClose        src/components/ui/dialog.tsx:88:3       
+DialogTrigger      src/components/ui/dialog.tsx:89:3       
+DialogHeader       src/components/ui/dialog.tsx:91:3       
+DialogFooter       src/components/ui/dialog.tsx:92:3       
+DialogDescription  src/components/ui/dialog.tsx:94:3       
+CardHeader         src/components/ui/card.tsx:43:16        
+CardFooter         src/components/ui/card.tsx:43:28        
+CardTitle          src/components/ui/card.tsx:43:40        
+CardDescription    src/components/ui/card.tsx:43:51        
+buttonVariants     src/components/ui/button.tsx:47:18      
+ToastAction        src/components/ui/toast.tsx:110:3       
+reducer            src/hooks/use-toast.ts:71:14            
+toast              src/hooks/use-toast.ts:186:20           
+[93m[4mUnused exported types[24m[39m (2)
+ButtonProps    interface  src/components/ui/button.tsx:33:18 
+TextareaProps  type       src/components/ui/textarea.tsx:5:13
+[33m[4mConfiguration hints[24m (1)[39m

@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 const logo = "/images/findolor-logo.webp";
 const PHONE_NUMBER = "573186912799";
 
+declare global {
+  interface Window {
+    gtag_report_conversion?: (url: string) => boolean;
+  }
+}
+
 export function StickyHeader() {
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +66,7 @@ export function StickyHeader() {
                   {/* Click-to-Call - mobile */}
                   <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
-                    onClick={() => (window as any).gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
+                    onClick={() => window.gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
                     className="md:hidden relative"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -76,7 +82,7 @@ export function StickyHeader() {
                   {/* Desktop phone */}
                   <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
-                    onClick={() => (window as any).gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
+                    onClick={() => window.gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
                     className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}

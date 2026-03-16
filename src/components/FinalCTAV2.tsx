@@ -2,6 +2,12 @@ import { motion } from "framer-motion";
 import { MessageCircle, Clock, ArrowRight, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+declare global {
+  interface Window {
+    gtag_report_conversion?: (url: string) => boolean;
+  }
+}
+
 export function FinalCTAV2() {
   return (
     <section className="py-20 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
@@ -61,7 +67,7 @@ export function FinalCTAV2() {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">
             <a
               href="tel:+573186912799"
-              onClick={() => (window as any).gtag_report_conversion?.('tel:+573186912799')}
+              onClick={() => window.gtag_report_conversion?.('tel:+573186912799')}
               className="flex items-center justify-center gap-2 text-white/80 hover:text-white transition-colors"
             >
               <Phone className="w-4 h-4" />
@@ -69,7 +75,7 @@ export function FinalCTAV2() {
             </a>
             <a
               href="tel:+576016736707"
-              onClick={() => (window as any).gtag_report_conversion?.('tel:+576016736707')}
+              onClick={() => window.gtag_report_conversion?.('tel:+576016736707')}
               className="flex items-center justify-center gap-2 text-white/80 hover:text-white transition-colors"
             >
               <Phone className="w-4 h-4" />

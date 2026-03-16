@@ -4,11 +4,18 @@ import { CheckCircle, Phone, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import findolorLogo from "@/assets/findolor-logo.png";
 
+declare global {
+  interface Window {
+    gtag?: (command: string, action: string, params: object) => void;
+    gtag_report_conversion?: (url: string) => boolean;
+  }
+}
+
 const Gracias = () => {
   useEffect(() => {
     // Google Ads conversion tracking for form submission
-    if (typeof (window as any).gtag === "function") {
-      (window as any).gtag("event", "conversion", {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
         send_to: "AW-853236324/FORM_CONVERSION_LABEL",
       });
     }
@@ -47,7 +54,7 @@ const Gracias = () => {
           <div className="flex flex-col items-center gap-2">
             <a
               href="tel:+573186912799"
-              onClick={() => (window as any).gtag_report_conversion?.("tel:+573186912799")}
+              onClick={() => window.gtag_report_conversion?.("tel:+573186912799")}
               className="flex items-center gap-2 text-primary font-semibold hover:underline"
             >
               <Phone className="w-4 h-4" />
@@ -55,7 +62,7 @@ const Gracias = () => {
             </a>
             <a
               href="tel:+576016736707"
-              onClick={() => (window as any).gtag_report_conversion?.("tel:+576016736707")}
+              onClick={() => window.gtag_report_conversion?.("tel:+576016736707")}
               className="flex items-center gap-2 text-primary font-semibold hover:underline"
             >
               <Phone className="w-4 h-4" />
