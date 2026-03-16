@@ -1,26 +1,35 @@
 
 
-## Plan: Mejorar botones del Sticky Header con técnicas UX de conversión
+## Plan: Configurar webhook para ambos formularios MultiStepForm
 
-### Cambios en `src/components/StickyHeader.tsx`
+### Contexto
+Ambos formularios (hero y booking-section) usan el mismo componente `MultiStepForm` con un prop `formSource` que ya distingue entre "hero" (Form 1, arriba) y "booking-section" (Form 2, abajo). Se enviaran los datos al mismo webhook pero incluyendo el campo `formSource` para poder identificar cual formulario convierte mejor.
 
-**1. Botón "Agendar Cita" — Mayor prominencia y urgencia:**
-- Añadir animación `pulse-subtle` (ya existe en el proyecto) para el glow pulsante verde alrededor del CTA.
-- Agregar un micro-badge de urgencia encima del botón ("Disponible hoy") que aparece con delay usando framer-motion.
-- Hover con `scale(1.05)` para feedback táctil.
+### Cambios
 
-**2. Botón de teléfono (móvil) — Más llamativo:**
-- Cambiar de `variant="outline"` a fondo sólido con gradiente primary.
-- Añadir animación sutil de ring/ping en el icono del teléfono para atraer atención.
-- Texto visible del número en desktop con estilo más prominente (font-semibold, color primary).
+**`src/components/MultiStepForm.tsx`** - Modificar `handleSubmit` para:
+1. Hacer un `fetch` POST al webhook `https://services.leadconnectorhq.com/hooks/6jIqC8dVIpPZSaRRRora/webhook-trigger/37367ef5-1ca4-4cad-acb8-23fbfb8f033a`
+2. Enviar un JSON con todos los campos del formulario: `especialidad`, `entidad`, `nombre`, `telefono`, `email`, `mensaje`, y `formSource` (que sera "hero" o "booking-section")
+3. Resolver los labels legibles de especialidad y entidad antes de enviar (en vez de los IDs internos)
+4. El fetch sera fire-and-forget (no bloquear la navegacion a /gracias si falla el webhook)
+5. Mantener la redireccion a `/gracias` despues de disparar el webhook
 
-**3. Entrada con stagger animation:**
-- Cuando el header aparece, los botones entran con un ligero delay escalonado (stagger) para guiar la mirada hacia el CTA.
+### Payload que se enviara al webhook
 
-**4. Responsive:**
-- Móvil: Botón teléfono con ping + CTA verde pulsante lado a lado.
-- Desktop: Número visible + CTA con badge de disponibilidad.
+```json
+{
+  "formSource": "hero",
+  "especialidad": "Medicina del dolor",
+  "entidad": "Allianz",
+  "nombre": "Juan Perez",
+  "telefono": "3001234567",
+  "email": "juan@email.com",
+  "mensaje": "Tengo dolor de espalda"
+}
+```
+
+El campo `formSource` tendra valor `"hero"` para el formulario de arriba y `"booking-section"` para el de abajo, lo que permite comparar en el CRM cual formulario genera mas conversiones.
 
 ### Archivos a modificar
-- `src/components/StickyHeader.tsx`
+- `src/components/MultiStepForm.tsx` (unica modificacion)
 
