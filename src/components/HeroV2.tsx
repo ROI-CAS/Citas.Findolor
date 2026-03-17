@@ -33,9 +33,8 @@ export function HeroV2() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332]/95 via-[#1a2332]/80 to-[#1a2332]/60" />
       </div>
 
-      <TopContactBar />
-      <div className="container relative z-10 py-6 lg:py-10 min-h-screen flex flex-col mt-20 md:mt-16">
-        {/* Header (Hidden logo to give space to TopContactBar, or keep it) */}
+      <div className="container relative z-10 py-6 lg:py-10 min-h-screen flex flex-col">
+        {/* Header */}
         <motion.header initial={{
         opacity: 0,
         y: -20
@@ -44,7 +43,7 @@ export function HeroV2() {
         y: 0
       }} transition={{
         duration: 0.5
-      }} className="flex items-center justify-center md:justify-start mb-8 mt-12 md:mt-8">
+      }} className="flex items-center justify-between mb-8">
           <img src={logo} alt="Findolor" className="w-auto brightness-200" style={{ width: '190px', height: 'auto' }} />
         </motion.header>
 
@@ -103,7 +102,10 @@ export function HeroV2() {
         }} transition={{
           duration: 0.6,
           delay: 0.2
-        }} className="relative opacity-100 shadow-2xl">
+        }} className="relative z-20">
+            
+            <TopContactBar />
+
             <div className="relative rounded-3xl p-5 md:p-7 shadow-2xl overflow-hidden" style={{
               background: "hsla(0, 0%, 100%, 0.92)",
               backdropFilter: "blur(20px)",
