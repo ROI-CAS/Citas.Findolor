@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, Clock, Award, ChevronDown, Phone } from "lucide-react";
 import { BookingTabs } from "./BookingTabs";
+import { TopContactBar } from "./TopContactBar";
 import heroImage from "@/assets/hero-findolor-bg.jpg";
 import heroImageMobile from "@/assets/hero-findolor-mobile.jpg";
 const logo = "/images/findolor-logo.webp";
@@ -32,8 +33,9 @@ export function HeroV2() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332]/95 via-[#1a2332]/80 to-[#1a2332]/60" />
       </div>
 
-      <div className="container relative z-10 py-6 lg:py-10 min-h-screen flex flex-col">
-        {/* Header */}
+      <TopContactBar />
+      <div className="container relative z-10 py-6 lg:py-10 min-h-screen flex flex-col mt-20 md:mt-16">
+        {/* Header (Hidden logo to give space to TopContactBar, or keep it) */}
         <motion.header initial={{
         opacity: 0,
         y: -20
@@ -42,7 +44,7 @@ export function HeroV2() {
         y: 0
       }} transition={{
         duration: 0.5
-      }} className="flex items-center justify-between mb-8">
+      }} className="flex items-center justify-center md:justify-start mb-8 mt-12 md:mt-8">
           <img src={logo} alt="Findolor" className="w-auto brightness-200" style={{ width: '190px', height: 'auto' }} />
         </motion.header>
 
