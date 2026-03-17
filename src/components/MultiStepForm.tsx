@@ -44,7 +44,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.nombre || !formData.telefono || !formData.especialidad || !formData.entidad || !formData.acceptedPolicies) return;
+    if (!formData.nombre || !formData.telefono || !formData.email || !formData.especialidad || !formData.entidad || !formData.acceptedPolicies) return;
     
     setIsSubmitting(true);
 
@@ -52,7 +52,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
       formSource,
       nombre: formData.nombre,
       telefono: formData.telefono,
-      email: formData.email || "No especificado",
+      email: formData.email,
       especialidad: formData.especialidad,
       entidad: formData.entidad,
       mensaje: "",
@@ -72,6 +72,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
   const canProceed = formData.nombre.trim().length > 0 && 
                      formData.telefono.trim().length > 0 && 
+                     formData.email.trim().length > 0 && 
                      formData.especialidad !== "" && 
                      formData.entidad !== "" && 
                      formData.acceptedPolicies;
@@ -115,7 +116,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
           <div className="space-y-2">
             <Label htmlFor="email" className="flex items-center gap-2 text-foreground font-semibold">
-              <Mail className="w-4 h-4 text-primary" /> Correo electrónico <span className="text-muted-foreground font-normal text-xs">(Opcional)</span>
+              <Mail className="w-4 h-4 text-primary" /> Correo electrónico <span className="text-destructive">*</span>
             </Label>
             <Input 
               id="email" 
@@ -124,6 +125,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
               onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
               placeholder="Para enviarte detalles de la cita" 
               className="h-12 text-base bg-background/50 focus:bg-background transition-colors" 
+              required
             />
           </div>
 
