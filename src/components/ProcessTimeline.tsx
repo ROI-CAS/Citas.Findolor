@@ -4,27 +4,21 @@ import { ClipboardCheck, Stethoscope, Pill, HeartPulse, ArrowRight } from "lucid
 const steps = [
   {
     icon: ClipboardCheck,
-    number: "01",
-    title: "Agenda tu Cita",
-    description: "Completa el formulario y te contactaremos lo antes posible para confirmar.",
-  },
-  {
-    icon: Stethoscope,
-    number: "02",
-    title: "Valoración Inicial",
-    description: "Evaluación integral para entender tu caso y tus objetivos de manejo.",
-  },
-  {
-    icon: Pill,
-    number: "03",
-    title: "Plan de Tratamiento",
-    description: "Definimos un plan personalizado con las opciones más adecuadas para ti.",
+    number: "1",
+    title: "Contacto Inicial",
+    description: "Llena el formulario o llámanos para solicitar tu valoración.",
   },
   {
     icon: HeartPulse,
-    number: "04",
-    title: "Acompañamiento Continuo",
-    description: "Seguimiento y ajustes según tu evolución, con acompañamiento cercano durante el proceso.",
+    number: "2",
+    title: "Confirmación",
+    description: "Nuestro equipo se comunicará contigo rápidamente para agendar la fecha.",
+  },
+  {
+    icon: Stethoscope,
+    number: "3",
+    title: "Valoración Especializada",
+    description: "Asiste a tu cita con nuestros especialistas y da el primer paso hacia una vida sin dolor.",
   },
 ];
 
@@ -42,7 +36,7 @@ export function ProcessTimeline() {
             Tu Proceso de Atención
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
-            4 Pasos para Iniciar tu Tratamiento
+            Reserva Tu Cita en 3 Sencillos Pasos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Un proceso simple y transparente diseñado para brindarte la mejor atención médica especializada
@@ -54,7 +48,7 @@ export function ProcessTimeline() {
           {/* Connecting Line */}
           <div className="absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary" />
 
-          <div className="grid grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
               <motion.div
                 key={index}

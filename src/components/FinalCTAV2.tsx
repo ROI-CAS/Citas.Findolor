@@ -40,7 +40,7 @@ export function FinalCTAV2() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <Button
               asChild
               size="lg"
@@ -62,6 +62,10 @@ export function FinalCTAV2() {
               </a>
             </Button>
           </div>
+          
+          <p className="text-sm text-white/70 mb-12 flex items-center justify-center gap-1.5 font-medium">
+            🔒 Tu información es confidencial y segura. Atención médica sin compromiso inicial.
+          </p>
 
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">

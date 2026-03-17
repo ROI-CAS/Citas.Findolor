@@ -63,19 +63,19 @@ export function StickyHeader() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-2 md:gap-3">
-                  {/* Click-to-Call - mobile */}
+                  {/* Mobile phone (Icon only if very small, but maybe text if possible) */}
                   <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
                     onClick={() => window.gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
-                    className="md:hidden relative"
+                    className="flex md:hidden items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-dark transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1, duration: 0.3 }}
                   >
-                    <div className="relative h-10 w-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-soft">
+                    <div className="relative h-9 w-9 rounded-full bg-primary/10 text-primary flex items-center justify-center">
                       <Phone className="w-4 h-4" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full animate-ping" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full animate-ping" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full" />
                     </div>
                   </motion.a>
 
@@ -83,7 +83,7 @@ export function StickyHeader() {
                   <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
                     onClick={() => window.gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
-                    className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                    className="hidden md:flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark transition-colors bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1, duration: 0.3 }}

@@ -60,14 +60,14 @@ export function HeroV2() {
         }} className="text-white">
 
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Especialistas en el{" "}
-              <span className="text-secondary">Manejo del Dolor Crónico y Cuidados Paliativos en Bogotá.</span>
+              Recupera tu calidad de vida con{" "}
+              <span className="text-secondary">Especialistas en Manejo del Dolor en Bogotá.</span>
             </h1>
 
-            <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
-              IPS especializada en dolor crónico y cuidados paliativos. En FinDolor realizamos valoración médica, diagnóstico y tratamiento con enfoque integral, combinando estrategias farmacológicas e intervencionistas según cada paciente.
-              <span className="block mt-3">
-                Acompañamos de forma cercana y segura a pacientes y familias durante todo el proceso.
+            <p className="text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
+              En Findolor, comprendemos tu situación y estamos comprometidos en brindarte una atención integral que mejore tu bienestar.
+              <span className="block mt-3 font-medium text-white">
+                Atención clínica personalizada en dolor crónico y cuidados paliativos, basada en la experiencia y la calidez humana.
               </span>
             </p>
 
