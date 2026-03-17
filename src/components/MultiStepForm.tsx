@@ -83,6 +83,32 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
       animate={{ opacity: 1, y: 0 }}
       className="w-full mb-2"
     >
+      <div className="mb-8 text-center px-2">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+          Agenda tu cita con un especialista en dolor crónico
+        </h3>
+        <p className="inline-flex items-center justify-center bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-sm shadow-sm ring-1 ring-emerald-200 dark:ring-emerald-800 mb-6">
+          — respuesta en menos de 24 horas —
+        </p>
+
+        <div className="py-4 border-y border-border/60 bg-muted/30 rounded-lg">
+          <p className="text-sm font-semibold text-foreground mb-3">
+            Aceptamos:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Sura", "Seguros Bolívar", "Seguros Alfa"].map((seguro) => (
+              <span 
+                key={seguro} 
+                className="px-4 py-1.5 bg-background shadow-sm text-primary rounded-full text-sm font-bold border border-primary/20 flex items-center gap-1.5"
+              >
+                <CheckCircle className="w-3.5 h-3.5" />
+                {seguro}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-4">
           <div className="space-y-2">
