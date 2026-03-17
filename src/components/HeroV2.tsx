@@ -33,8 +33,8 @@ export function HeroV2() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332]/95 via-[#1a2332]/80 to-[#1a2332]/60" />
       </div>
 
-      <div className="container relative z-10 py-6 lg:py-10 min-h-screen flex flex-col">
-        {/* Header */}
+      <div className="container relative z-10 py-6 lg:py-8 min-h-screen flex flex-col pt-24 lg:pt-32">
+        {/* Header - Now positioned absolute or flex */}
         <motion.header initial={{
         opacity: 0,
         y: -20
@@ -43,12 +43,12 @@ export function HeroV2() {
         y: 0
       }} transition={{
         duration: 0.5
-      }} className="flex items-center justify-between mb-8">
-          <img src={logo} alt="Findolor" className="w-auto brightness-200" style={{ width: '190px', height: 'auto' }} />
+      }} className="absolute top-6 lg:top-8 left-4 lg:left-8 z-50">
+          <img src={logo} alt="Findolor" className="w-[160px] md:w-[190px] h-auto brightness-200" />
         </motion.header>
 
         {/* Main Content */}
-        <div className="flex-1 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="flex-1 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mt-8 lg:mt-4">
           {/* Left - Messaging */}
           <motion.div initial={{
           opacity: 0,
@@ -58,7 +58,7 @@ export function HeroV2() {
           x: 0
         }} transition={{
           duration: 0.6
-        }} className="text-white">
+        }} className="text-white mt-12 lg:mt-24">
 
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               Recupera tu calidad de vida con{" "}
@@ -102,7 +102,7 @@ export function HeroV2() {
         }} transition={{
           duration: 0.6,
           delay: 0.2
-        }} className="relative z-20">
+        }} className="relative z-20 mt-16 md:mt-0">
             
             <TopContactBar />
 
