@@ -81,7 +81,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
     <motion.div 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full max-w-lg mx-auto mb-2"
+      className="w-full mb-2"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-4">

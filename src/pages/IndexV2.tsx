@@ -66,7 +66,7 @@ const IndexV2 = () => {
 
       {/* Sección de agendamiento inferior */}
       <section id="agendar" className="py-16 md:py-20 bg-muted/30">
-        <div className="container max-w-lg mx-auto">
+        <div className="container max-w-2xl lg:max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
               Da el primer paso hacia una vida sin dolor
