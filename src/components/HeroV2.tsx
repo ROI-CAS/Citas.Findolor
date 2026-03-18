@@ -73,7 +73,7 @@ export function HeroV2() {
             </p>
 
             {/* Trust Points */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-6 mb-10">
               {trustPoints.map((point, index) => <motion.div key={index} initial={{
               opacity: 0,
               y: 20
@@ -90,6 +90,24 @@ export function HeroV2() {
                   <span className="text-sm text-white/90">{point.text}</span>
                 </motion.div>)}
             </div>
+
+            {/* Insurance Banner */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="pt-6 border-t border-white/10 mb-8 lg:mb-12"
+            >
+              <p className="text-base font-normal text-white/80 mb-5 tracking-wide lowercase">
+                en convenio con aseguradoras
+              </p>
+              <div className="flex flex-wrap items-center gap-6 lg:gap-10 mt-2">
+                <img src="/images/insurers/allianz.png" alt="Allianz" className="h-[35px] md:h-[50px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Allianz" />
+                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-[45px] md:h-[65px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Seguros Bolívar" />
+                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-[40px] md:h-[55px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Seguros Alfa" />
+                <img src="/images/insurers/sura.png" alt="Sura" className="h-[30px] md:h-[45px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Sura" />
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Right - Form with Glassmorphism */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, CalendarDays, CheckCircle, ArrowRight } from "lucide-react";
+import { Phone, CalendarDays, CheckCircle, ArrowRight, Clock } from "lucide-react";
 import { MultiStepForm } from "./MultiStepForm";
 import {
   Dialog,
@@ -46,6 +46,16 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
           Prefiero elegir
         </button>
       </div>
+
+      {/* 24h Badge only on call tab */}
+      {activeTab === "call" && (
+        <div className="mb-4 text-center">
+          <p className="inline-flex items-center justify-center gap-1.5 bg-[#50D87F]/10 text-emerald-700 dark:bg-[#50D87F]/20 dark:text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-xs sm:text-sm">
+            <Clock className="w-3.5 h-3.5" />
+            Respuesta asegurada en <span className="font-bold underline decoration-emerald-500/30 underline-offset-2">menos de 24 horas</span>
+          </p>
+        </div>
+      )}
 
       {/* Tab content - fixed height container */}
       <div className="min-h-[340px]">

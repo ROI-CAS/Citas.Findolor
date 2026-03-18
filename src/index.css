@@ -186,11 +186,11 @@
 
   /* Trust bar logo grayscale effect */
   .trust-logo {
-    @apply grayscale opacity-60 transition-all duration-300;
+    @apply transition-all duration-300;
   }
 
   .trust-logo:hover {
-    @apply grayscale-0 opacity-100;
+    @apply scale-105;
   }
 
   /* Decorative elements */
