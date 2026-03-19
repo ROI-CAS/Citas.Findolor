@@ -16,12 +16,16 @@ export function StickyHeader() {
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [formFocused, setFormFocused] = useState(false);
+  const [scrolledDown, setScrolledDown] = useState(false);
 
   useEffect(() => {
+    let lastY = window.scrollY;
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsVisible(scrollY > window.innerHeight * 0.5);
       setIsScrolled(scrollY > 50);
+      setScrolledDown(scrollY > lastY && scrollY > 100);
+      lastY = scrollY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -51,7 +55,7 @@ export function StickyHeader() {
       {isVisible && !formFocused && (
         <motion.header
           initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          animate={{ y: scrolledDown ? -100 : 0, opacity: scrolledDown ? 0 : 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 right-0 z-50"

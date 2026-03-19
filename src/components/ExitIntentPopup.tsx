@@ -18,22 +18,14 @@ export function ExitIntentPopup() {
       }
     };
 
-    // Mobile: trigger after 35 seconds of inactivity
-    let mobileTimer: ReturnType<typeof setTimeout> | null = null;
     const isMobile = window.innerWidth < 768;
 
-    if (isMobile && !hasShown) {
-      mobileTimer = setTimeout(() => {
-        setIsVisible(true);
-        setHasShown(true);
-      }, 35000);
-    } else {
+    if (!isMobile) {
       document.addEventListener("mouseleave", handleMouseLeave);
     }
 
     return () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
-      if (mobileTimer) clearTimeout(mobileTimer);
     };
   }, [hasShown]);
 

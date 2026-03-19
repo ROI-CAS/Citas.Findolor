@@ -7,6 +7,7 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}
 
 export function MobileStickyCTA() {
   const [formFocused, setFormFocused] = useState(false);
+  const [scrolledDown, setScrolledDown] = useState(false);
 
   useEffect(() => {
     const handleFocusIn = (e: FocusEvent) => {
@@ -21,16 +22,29 @@ export function MobileStickyCTA() {
     };
     document.addEventListener("focusin", handleFocusIn);
     document.addEventListener("focusout", handleFocusOut);
+
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setScrolledDown(scrollY > lastY && scrollY > 100);
+      lastY = scrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
       document.removeEventListener("focusin", handleFocusIn);
       document.removeEventListener("focusout", handleFocusOut);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   if (formFocused) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
+    <div
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300"
+      style={{ transform: scrolledDown ? "translateY(100%)" : "translateY(0)" }}
+    >
       {/* Subtle gradient fade above the bar */}
       <div className="h-6 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
 
