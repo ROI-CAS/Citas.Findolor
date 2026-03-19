@@ -5,6 +5,7 @@ import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
 import { BookingTabs } from "@/components/BookingTabs";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 // Lazy load below-fold components
 const SocialProofV2 = lazy(() => import("@/components/SocialProofV2").then(m => ({ default: m.SocialProofV2 })));
@@ -41,7 +42,7 @@ const IndexV2 = () => {
     }
   }, [hash]);
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-28 md:pb-0">
       <StickyHeader />
       <HeroV2 />
       <TrustBadges />
@@ -129,6 +130,7 @@ const IndexV2 = () => {
       <Suspense fallback={null}>
         <WhatsAppButton />
       </Suspense>
+      <MobileStickyCTA />
     </div>
   );
 };

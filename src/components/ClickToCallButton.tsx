@@ -13,8 +13,8 @@ declare global {
 export function ClickToCallButton() {
   const isMobile = useIsMobile();
 
-  // Only show on mobile devices
-  if (!isMobile) return null;
+  // Sticky bar already handles calls on mobile
+  if (isMobile) return null;
 
   return (
     <motion.a

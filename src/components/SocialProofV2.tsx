@@ -174,21 +174,14 @@ export function SocialProofV2() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="text-base font-medium text-foreground mb-8">
             Convenio con aseguradoras
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {["allianz", "seguros-bolivar", "seguros-alfa", "sura"].map((insurer) => (
-              <img
-                key={insurer}
-                src={`/images/insurers/${insurer}.png`}
-                alt={insurer}
-                className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
-                loading="lazy"
-                width={120}
-                height={48}
-              />
-            ))}
+          <div className="flex items-center justify-center gap-6 sm:gap-10 flex-nowrap overflow-x-auto px-4">
+            <img src="/images/insurers/allianz.png" alt="Allianz" className="h-12 md:h-14 w-auto object-contain flex-shrink-0" loading="lazy" />
+            <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-14 md:h-16 w-auto object-contain flex-shrink-0" loading="lazy" />
+            <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-13 md:h-15 w-auto object-contain flex-shrink-0" loading="lazy" />
+            <img src="/images/insurers/sura.png" alt="Sura" className="h-11 md:h-13 w-auto object-contain flex-shrink-0" loading="lazy" />
           </div>
         </motion.div>
       </div>

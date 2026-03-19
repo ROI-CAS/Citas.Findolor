@@ -8,12 +8,6 @@ import { Label } from "@/components/ui/label";
 import { useAppointments } from "@/context/AppointmentContext";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const especialidades = [
-  "Medicina del dolor",
-  "Cuidados paliativos",
-  "Anestesia"
-];
-
 const entidades = [
   "Particular",
   "Allianz",
@@ -35,7 +29,6 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
     nombre: "",
     telefono: "",
     email: "",
-    especialidad: "",
     entidad: "",
     acceptedPolicies: false
   });
@@ -44,7 +37,7 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.nombre || !formData.telefono || !formData.email || !formData.especialidad || !formData.entidad || !formData.acceptedPolicies) return;
+    if (!formData.nombre || !formData.telefono || !formData.email || !formData.entidad || !formData.acceptedPolicies) return;
     
     setIsSubmitting(true);
 
@@ -53,7 +46,6 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
       nombre: formData.nombre,
       telefono: formData.telefono,
       email: formData.email,
-      especialidad: formData.especialidad,
       entidad: formData.entidad,
       mensaje: "",
     };
@@ -70,11 +62,10 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
     navigate("/gracias");
   };
 
-  const canProceed = formData.nombre.trim().length > 0 && 
-                     formData.telefono.trim().length > 0 && 
-                     formData.email.trim().length > 0 && 
-                     formData.especialidad !== "" && 
-                     formData.entidad !== "" && 
+  const canProceed = formData.nombre.trim().length > 0 &&
+                     formData.telefono.trim().length > 0 &&
+                     formData.email.trim().length > 0 &&
+                     formData.entidad !== "" &&
                      formData.acceptedPolicies;
 
   return (
@@ -90,28 +81,28 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
             <Label htmlFor="nombre" className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <User className="w-4 h-4 text-primary" /> Nombre completo <span className="text-destructive">*</span>
             </Label>
-            <Input 
-              id="nombre" 
-              value={formData.nombre} 
+            <Input
+              id="nombre"
+              value={formData.nombre}
               onChange={e => setFormData(prev => ({ ...prev, nombre: e.target.value }))}
-              placeholder="¿Cómo te llamas?" 
-              className="h-11 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm" 
-              required 
+              placeholder="¿Cómo te llamas?"
+              className="h-14 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm"
+              required
             />
           </div>
-          
+
           <div className="space-y-1.5">
             <Label htmlFor="telefono" className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <Phone className="w-4 h-4 text-primary" /> Teléfono / Celular <span className="text-destructive">*</span>
             </Label>
-            <Input 
-              id="telefono" 
-              type="tel" 
-              value={formData.telefono} 
+            <Input
+              id="telefono"
+              type="tel"
+              value={formData.telefono}
               onChange={e => setFormData(prev => ({ ...prev, telefono: e.target.value }))}
-              placeholder="Para llamarte y confirmar" 
-              className="h-11 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm" 
-              required 
+              placeholder="Para llamarte y confirmar"
+              className="h-14 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm"
+              required
             />
           </div>
 
@@ -120,54 +111,31 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
             <Label htmlFor="email" className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <Mail className="w-4 h-4 text-primary" /> Correo electrónico <span className="text-destructive">*</span>
             </Label>
-            <Input 
-              id="email" 
-              type="email" 
-              value={formData.email} 
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
               onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              placeholder="Para enviarte detalles de la cita" 
-              className="h-11 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm" 
+              placeholder="Para enviarte detalles de la cita"
+              className="h-14 md:h-12 text-base bg-background/60 focus:bg-background transition-colors shadow-sm"
               required
             />
           </div>
 
-          {/* Fila 3: Selectores */}
-          <div className="space-y-1.5">
-            <Label htmlFor="especialidad" className="flex items-center gap-2 text-foreground font-semibold text-sm">
-              Seleccione Especialidad <span className="text-destructive">*</span>
-            </Label>
-            <div className="relative">
-              <select
-                id="especialidad"
-                value={formData.especialidad}
-                onChange={e => setFormData(prev => ({ ...prev, especialidad: e.target.value }))}
-                className="flex h-11 md:h-12 w-full items-center justify-between rounded-lg border border-input bg-background/60 px-3 py-2 text-base shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring focus:border-primary transition-colors appearance-none cursor-pointer"
-                required
-              >
-                <option value="" disabled>Selecciona una opción</option>
-                {especialidades.map(esp => (
-                  <option key={esp} value={esp}>{esp}</option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground">
-                <svg className="h-4 w-4 opacity-50" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
+          {/* Fila 3: Solo seguro médico (especialidad se recoge por teléfono) */}
+          <div className="space-y-1.5 md:col-span-2">
             <Label htmlFor="entidad" className="flex items-center gap-2 text-foreground font-semibold text-sm">
-              Seleccione Entidad <span className="text-destructive">*</span>
+              ¿Tienes seguro médico? <span className="text-destructive">*</span>
             </Label>
             <div className="relative">
               <select
                 id="entidad"
                 value={formData.entidad}
                 onChange={e => setFormData(prev => ({ ...prev, entidad: e.target.value }))}
-                className="flex h-11 md:h-12 w-full items-center justify-between rounded-lg border border-input bg-background/60 px-3 py-2 text-base shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring focus:border-primary transition-colors appearance-none cursor-pointer"
+                className="flex h-14 md:h-12 w-full items-center justify-between rounded-lg border border-input bg-background/60 px-3 py-2 text-base shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring focus:border-primary transition-colors appearance-none cursor-pointer"
                 required
               >
-                <option value="" disabled>Selecciona una opción</option>
+                <option value="" disabled>Selecciona tu aseguradora</option>
                 {entidades.map(ent => (
                   <option key={ent} value={ent}>{ent}</option>
                 ))}

@@ -17,8 +17,8 @@ export function WhatsAppButton() {
 
   return (
     <>
-      {/* Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Floating Button - desktop only, mobile uses sticky bar */}
+      <div className="hidden md:block fixed bottom-6 right-6 z-50">
         <AnimatePresence>
           {isOpen && (
             <motion.div

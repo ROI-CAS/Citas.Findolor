@@ -47,12 +47,12 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
         </button>
       </div>
 
-      {/* 24h Badge only on call tab */}
+      {/* Response badge only on call tab */}
       {activeTab === "call" && (
         <div className="mb-4 text-center">
-          <p className="inline-flex items-center justify-center gap-1.5 bg-[#50D87F]/10 text-emerald-700 dark:bg-[#50D87F]/20 dark:text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-xs sm:text-sm">
-            <Clock className="w-3.5 h-3.5" />
-            <span className="font-bold underline decoration-emerald-500/30 underline-offset-2">Te llamamos hoy mismo</span>
+          <p className="inline-flex items-center justify-center gap-2 bg-[#50D87F]/15 text-emerald-700 dark:bg-[#50D87F]/20 dark:text-emerald-300 font-bold px-4 py-2 rounded-full text-sm border border-emerald-500/20">
+            <Clock className="w-4 h-4 flex-shrink-0" />
+            <span>Te llamamos <span className="underline decoration-emerald-500/40 underline-offset-2">hoy mismo</span></span>
           </p>
         </div>
       )}

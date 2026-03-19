@@ -45,7 +45,7 @@ export function LiveCounter() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed bottom-24 left-4 z-40 bg-white rounded-xl shadow-xl border border-border p-3 sm:p-4 max-w-[200px] sm:max-w-xs"
+      className="hidden md:block fixed bottom-24 left-4 z-40 bg-white rounded-xl shadow-xl border border-border p-3 sm:p-4 max-w-[200px] sm:max-w-xs"
     >
       <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
         <div className="relative flex-shrink-0">

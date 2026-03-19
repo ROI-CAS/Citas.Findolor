@@ -98,17 +98,27 @@ export function HeroV2() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="pt-6 border-t border-white/10 mb-8 lg:mb-12"
             >
-              <p className="text-base font-normal text-white/80 mb-5 tracking-wide lowercase">
+              <p className="text-base font-medium text-white/80 mb-4 lowercase">
                 en convenio con aseguradoras
               </p>
-              <div className="flex flex-wrap items-center gap-6 lg:gap-10 mt-2">
-                <img src="/images/insurers/allianz.png" alt="Allianz" className="h-[35px] md:h-[50px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Allianz" />
-                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-[45px] md:h-[65px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Seguros Bolívar" />
-                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-[40px] md:h-[55px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Seguros Alfa" />
-                <img src="/images/insurers/sura.png" alt="Sura" className="h-[30px] md:h-[45px] w-auto object-contain trust-logo brightness-0 invert opacity-70 hover:opacity-100" title="Sura" />
+              <div className="flex items-center justify-between gap-4 md:gap-8 lg:gap-10">
+                <img src="/images/insurers/allianz.png" alt="Allianz" className="h-[52px] md:h-[52px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Allianz" />
+                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-[64px] md:h-[68px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Bolívar" />
+                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-[58px] md:h-[58px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
+                <img src="/images/insurers/sura.png" alt="Sura" className="h-[48px] md:h-[48px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Mobile-only: mini testimonial + direct CTA before form */}
+          <div className="md:hidden col-span-full -mt-4 mb-2">
+            <div className="bg-white/10 backdrop-blur rounded-2xl px-4 py-3 border border-white/20">
+              <p className="text-white/90 text-sm leading-relaxed italic">
+                "Mi mamá llegó al consultorio casi sin poder caminar y luego de dos horas <strong className="text-white font-semibold">salió muy relajada</strong>. De todo corazón lo recomiendo."
+              </p>
+              <p className="text-white/60 text-xs mt-1.5">— Andrea Blanco · Google ★★★★★</p>
+            </div>
+          </div>
 
           {/* Right - Form with Glassmorphism */}
           <motion.div initial={{
@@ -120,7 +130,7 @@ export function HeroV2() {
         }} transition={{
           duration: 0.6,
           delay: 0.2
-        }} className="relative z-20 mt-16 md:mt-0">
+        }} className="relative z-20 mt-4 md:mt-0">
             
             <TopContactBar />
 

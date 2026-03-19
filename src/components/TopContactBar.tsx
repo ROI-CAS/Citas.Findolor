@@ -2,7 +2,7 @@ import { Smartphone, Phone as PhoneIcon } from "lucide-react";
 
 export function TopContactBar() {
   return (
-    <div className="w-full mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-lg">
+    <div className="hidden md:block w-full mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-lg">
       <p className="text-white/90 text-sm md:text-base mb-3 text-center font-medium">
         Contáctanos para Agendar tu Cita
       </p>
