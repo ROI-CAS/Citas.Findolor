@@ -10,6 +10,7 @@ export function ExitIntentPopup() {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
+    // Desktop: trigger on mouse leaving viewport
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0 && !hasShown) {
         setIsVisible(true);
@@ -17,8 +18,23 @@ export function ExitIntentPopup() {
       }
     };
 
-    document.addEventListener("mouseleave", handleMouseLeave);
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+    // Mobile: trigger after 35 seconds of inactivity
+    let mobileTimer: ReturnType<typeof setTimeout> | null = null;
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile && !hasShown) {
+      mobileTimer = setTimeout(() => {
+        setIsVisible(true);
+        setHasShown(true);
+      }, 35000);
+    } else {
+      document.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      if (mobileTimer) clearTimeout(mobileTimer);
+    };
   }, [hasShown]);
 
   const handleSubmit = (e: React.FormEvent) => {

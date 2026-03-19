@@ -101,17 +101,27 @@ export function HeroV2() {
               <p className="text-base font-medium text-white/80 mb-4 lowercase">
                 en convenio con aseguradoras
               </p>
-              <div className="flex items-center justify-between gap-4 md:gap-8 lg:gap-10">
-                <img src="/images/insurers/allianz.png" alt="Allianz" className="h-[52px] md:h-[52px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Allianz" />
-                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-[64px] md:h-[68px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Bolívar" />
-                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-[58px] md:h-[58px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
-                <img src="/images/insurers/sura.png" alt="Sura" className="h-[48px] md:h-[48px] w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
+              <div className="grid grid-cols-4 items-center gap-4 md:gap-8 lg:gap-10">
+                <img src="/images/insurers/allianz.png" alt="Allianz" className="w-full h-auto max-h-9 md:max-h-[50px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Allianz" />
+                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="w-full h-auto max-h-11 md:max-h-[65px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Bolívar" />
+                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="w-full h-auto max-h-10 md:max-h-[55px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
+                <img src="/images/insurers/sura.png" alt="Sura" className="w-full h-auto max-h-8 md:max-h-[45px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
               </div>
             </motion.div>
           </motion.div>
 
+          {/* Mobile-only: scroll to form button */}
+          <div className="md:hidden col-span-full -mt-6 mb-1 flex justify-center">
+            <button
+              onClick={() => document.getElementById("booking-form-hero")?.scrollIntoView({ behavior: "smooth" })}
+              className="flex items-center gap-2 text-white/80 text-sm font-medium border border-white/30 rounded-full px-5 py-2.5 backdrop-blur-sm hover:bg-white/10 transition-colors active:scale-95"
+            >
+              Ver formulario de cita ↓
+            </button>
+          </div>
+
           {/* Mobile-only: mini testimonial + direct CTA before form */}
-          <div className="md:hidden col-span-full -mt-4 mb-2">
+          <div className="md:hidden col-span-full mb-2" id="booking-form-hero">
             <div className="bg-white/10 backdrop-blur rounded-2xl px-4 py-3 border border-white/20">
               <p className="text-white/90 text-sm leading-relaxed italic">
                 "Mi mamá llegó al consultorio casi sin poder caminar y luego de dos horas <strong className="text-white font-semibold">salió muy relajada</strong>. De todo corazón lo recomiendo."

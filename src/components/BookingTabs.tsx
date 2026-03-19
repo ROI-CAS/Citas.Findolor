@@ -43,7 +43,7 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
           }`}
         >
           <CalendarDays className="w-4 h-4" />
-          Prefiero elegir
+          Agendo yo
         </button>
       </div>
 
@@ -52,7 +52,7 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
         <div className="mb-4 text-center">
           <p className="inline-flex items-center justify-center gap-2 bg-[#50D87F]/15 text-emerald-700 dark:bg-[#50D87F]/20 dark:text-emerald-300 font-bold px-4 py-2 rounded-full text-sm border border-emerald-500/20">
             <Clock className="w-4 h-4 flex-shrink-0" />
-            <span>Te llamamos <span className="underline decoration-emerald-500/40 underline-offset-2">hoy mismo</span></span>
+            <span>Respondemos <span className="underline decoration-emerald-500/40 underline-offset-2">hoy mismo</span></span>
           </p>
         </div>
       )}

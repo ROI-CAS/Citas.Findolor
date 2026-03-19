@@ -177,11 +177,11 @@ export function SocialProofV2() {
           <p className="text-base font-medium text-foreground mb-8">
             Convenio con aseguradoras
           </p>
-          <div className="flex items-center justify-center gap-6 sm:gap-10 flex-nowrap overflow-x-auto px-4">
-            <img src="/images/insurers/allianz.png" alt="Allianz" className="h-12 md:h-14 w-auto object-contain flex-shrink-0" loading="lazy" />
-            <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="h-14 md:h-16 w-auto object-contain flex-shrink-0" loading="lazy" />
-            <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="h-13 md:h-15 w-auto object-contain flex-shrink-0" loading="lazy" />
-            <img src="/images/insurers/sura.png" alt="Sura" className="h-11 md:h-13 w-auto object-contain flex-shrink-0" loading="lazy" />
+          <div className="grid grid-cols-4 items-center gap-4 max-w-lg mx-auto px-2">
+            <img src="/images/insurers/allianz.png" alt="Allianz" className="w-full h-auto max-h-10 md:max-h-12 object-contain" loading="lazy" />
+            <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="w-full h-auto max-h-12 md:max-h-14 object-contain" loading="lazy" />
+            <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="w-full h-auto max-h-10 md:max-h-12 object-contain" loading="lazy" />
+            <img src="/images/insurers/sura.png" alt="Sura" className="w-full h-auto max-h-9 md:max-h-11 object-contain" loading="lazy" />
           </div>
         </motion.div>
       </div>

@@ -122,21 +122,23 @@ export function FAQSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <Tabs defaultValue="citas" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto gap-2 bg-transparent p-0 mb-8">
-              {faqCategories.map((category) => {
-                const Icon = category.icon;
-                return (
-                  <TabsTrigger
-                    key={category.id}
-                    value={category.id}
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-card data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-primary transition-all duration-200 hover:border-primary/50"
-                  >
-                    <Icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">{category.label}</span>
-                  </TabsTrigger>
-                );
-              })}
-            </TabsList>
+            <div className="overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+              <TabsList className="flex md:grid md:grid-cols-4 w-max md:w-full h-auto gap-2 bg-transparent p-0 mb-8">
+                {faqCategories.map((category) => {
+                  const Icon = category.icon;
+                  return (
+                    <TabsTrigger
+                      key={category.id}
+                      value={category.id}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-card data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-primary transition-all duration-200 hover:border-primary/50 whitespace-nowrap flex-shrink-0"
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span className="text-sm font-medium">{category.label}</span>
+                    </TabsTrigger>
+                  );
+                })}
+              </TabsList>
+            </div>
 
             {faqCategories.map((category) => (
               <TabsContent

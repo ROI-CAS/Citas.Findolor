@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 
 const WHATSAPP_NUMBER = "573186912799";
@@ -5,6 +6,29 @@ const WHATSAPP_MESSAGE = encodeURIComponent("Hola, quiero agendar mi cita para v
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export function MobileStickyCTA() {
+  const [formFocused, setFormFocused] = useState(false);
+
+  useEffect(() => {
+    const handleFocusIn = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) {
+        setFormFocused(true);
+      }
+    };
+    const handleFocusOut = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) {
+        setFormFocused(false);
+      }
+    };
+    document.addEventListener("focusin", handleFocusIn);
+    document.addEventListener("focusout", handleFocusOut);
+    return () => {
+      document.removeEventListener("focusin", handleFocusIn);
+      document.removeEventListener("focusout", handleFocusOut);
+    };
+  }, []);
+
+  if (formFocused) return null;
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
       {/* Subtle gradient fade above the bar */}

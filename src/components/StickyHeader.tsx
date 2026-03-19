@@ -15,22 +15,40 @@ declare global {
 export function StickyHeader() {
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [formFocused, setFormFocused] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Show after scrolling past hero section (approximately 100vh)
       setIsVisible(scrollY > window.innerHeight * 0.5);
       setIsScrolled(scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleFocusIn = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) {
+        setFormFocused(true);
+      }
+    };
+    const handleFocusOut = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLTextAreaElement) {
+        setFormFocused(false);
+      }
+    };
+    document.addEventListener("focusin", handleFocusIn);
+    document.addEventListener("focusout", handleFocusOut);
+    return () => {
+      document.removeEventListener("focusin", handleFocusIn);
+      document.removeEventListener("focusout", handleFocusOut);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !formFocused && (
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -96,13 +114,13 @@ export function StickyHeader() {
                     <span>318 691 2799</span>
                   </motion.a>
 
-                  {/* CTA Button */}
+                  {/* CTA Button — desktop only, mobile has sticky bottom bar */}
                   <motion.a
                     href="#agendar"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
-                    className="relative"
+                    className="relative hidden md:block"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                   >
