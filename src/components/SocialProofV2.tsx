@@ -45,7 +45,7 @@ function renderHighlightedText(text: string) {
 }
 
 const stats = [
-  { value: "4.9★", label: "Calificación en Google" },
+  { value: "500+", label: "Pacientes atendidos" },
   { value: "20+", label: "Años de experiencia" },
   { value: "10+", label: "Especialistas certificados" },
 ];

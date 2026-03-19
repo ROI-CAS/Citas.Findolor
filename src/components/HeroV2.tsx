@@ -68,7 +68,7 @@ export function HeroV2() {
             <p className="text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
               No más tratamientos que solo alivian temporalmente. En FinDolor evaluamos tu caso completo y diseñamos un plan para que vuelvas a vivir sin depender del dolor.
               <span className="block mt-3 font-medium text-white">
-                +20 años de experiencia · 4.9★ en Google · Plan personalizado desde la primera valoración.
+                +20 años de experiencia · Plan personalizado desde la primera valoración.
               </span>
             </p>
 
