@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Phone } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const logo = "/images/findolor-logo.webp";
@@ -81,22 +81,6 @@ export function StickyHeader() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-2 md:gap-3">
-                  {/* Mobile phone (Icon only if very small, but maybe text if possible) */}
-                  <motion.a
-                    href={`tel:+${PHONE_NUMBER}`}
-                    onClick={() => window.gtag_report_conversion?.(`tel:+${PHONE_NUMBER}`)}
-                    className="flex md:hidden items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-dark transition-colors"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1, duration: 0.3 }}
-                  >
-                    <div className="relative h-9 w-9 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                      <Phone className="w-4 h-4" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full animate-ping" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full" />
-                    </div>
-                  </motion.a>
-
                   {/* Desktop phone */}
                   <motion.a
                     href={`tel:+${PHONE_NUMBER}`}
@@ -106,21 +90,16 @@ export function StickyHeader() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1, duration: 0.3 }}
                   >
-                    <div className="relative">
-                      <Phone className="w-4 h-4" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full animate-ping" />
-                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full" />
-                    </div>
                     <span>318 691 2799</span>
                   </motion.a>
 
-                  {/* CTA Button — desktop only, mobile has sticky bottom bar */}
+                  {/* CTA Button */}
                   <motion.a
                     href="#agendar"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.3 }}
-                    className="relative hidden md:block"
+                    className="relative"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -128,8 +107,7 @@ export function StickyHeader() {
                       className="btn-cta h-10 md:h-11 px-4 md:px-6 rounded-xl text-sm md:text-base font-semibold animate-pulse-subtle"
                     >
                       <Calendar className="w-4 h-4 mr-2" />
-                      <span className="hidden sm:inline">Agendar Cita</span>
-                      <span className="sm:hidden">Agendar</span>
+                      Agendar
                     </Button>
                     {/* Urgency micro-badge */}
                     <motion.span
