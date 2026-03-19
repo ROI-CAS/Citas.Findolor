@@ -10,7 +10,7 @@ const trustPoints = [{
   text: "Médicos especialistas en tratamiento del dolor crónico"
 }, {
   icon: Clock,
-  text: "Respuesta oportuna"
+  text: "Llamamos el mismo día"
 }, {
   icon: Award,
   text: "+20 años de experiencia"
@@ -61,14 +61,14 @@ export function HeroV2() {
         }} className="text-white mt-12 lg:mt-24">
 
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Recupera tu calidad de vida con{" "}
-              <span className="text-secondary">Especialistas en Manejo del Dolor en Bogotá.</span>
+              ¿Llevas años con dolor crónico sin encontrar solución?{" "}
+              <span className="text-secondary">Nuestros especialistas lo tratan desde la primera consulta.</span>
             </h1>
 
             <p className="text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
-              En Findolor, comprendemos tu situación y estamos comprometidos en brindarte una atención integral que mejore tu bienestar.
+              No más tratamientos que solo alivian temporalmente. En FinDolor evaluamos tu caso completo y diseñamos un plan para que vuelvas a vivir sin depender del dolor.
               <span className="block mt-3 font-medium text-white">
-                Atención clínica personalizada en dolor crónico y cuidados paliativos, basada en la experiencia y la calidez humana.
+                +20 años de experiencia · 4.9★ en Google · Plan personalizado desde la primera valoración.
               </span>
             </p>
 

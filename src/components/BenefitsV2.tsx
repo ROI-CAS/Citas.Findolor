@@ -10,7 +10,7 @@ const benefits = [
   {
     icon: Heart,
     title: "Atención Humanizada",
-    description: "Entendemos tu dolor. Cada paciente recibe un trato personalizado y empático.",
+    description: "El Dr. Garzón y su equipo te escuchan durante toda la consulta — sin prisa, sin recetas genéricas.",
   },
   {
     icon: Users,
@@ -54,8 +54,8 @@ export function BenefitsV2() {
             </span>
             
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-              IPS especializada en{" "}
-              <span className="text-gradient">dolor crónico y cuidados paliativos</span>
+              Donde otros tratamientos fallaron,{" "}
+              <span className="text-gradient">FinDolor encuentra la solución</span>
             </h2>
             
             <p className="text-muted-foreground text-lg mb-8">

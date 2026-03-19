@@ -12,7 +12,7 @@ const steps = [
     icon: HeartPulse,
     number: "2",
     title: "Confirmación",
-    description: "Nuestro equipo se comunicará contigo rápidamente para agendar la fecha.",
+    description: "Te llamamos el mismo día (en horario hábil) para confirmar tu cita.",
   },
   {
     icon: Stethoscope,

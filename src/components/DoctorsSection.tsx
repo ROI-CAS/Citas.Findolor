@@ -27,7 +27,7 @@ export function DoctorsSection() {
           className="text-center mb-12"
         >
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Gerente General
+            Tu Especialista
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             Especialista con amplia experiencia

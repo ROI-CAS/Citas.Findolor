@@ -63,8 +63,8 @@ export function ExitIntentPopup() {
                     <HeartPulse className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">¡No te vayas!</h3>
-                    <p className="text-sm text-white/80">Tu bienestar es nuestra prioridad</p>
+                    <h3 className="text-xl font-bold">¿Aún tienes dudas?</h3>
+                    <p className="text-sm text-white/80">Es normal — estamos aquí para orientarte</p>
                   </div>
                 </div>
               </div>
@@ -72,14 +72,14 @@ export function ExitIntentPopup() {
               {/* Content */}
               <div className="p-6">
                 <h4 className="text-xl font-bold text-foreground mb-2">
-                  ¿Te vas sin agendar tu cita?
+                  Una llamada sin compromiso puede orientarte
                 </h4>
                 <p className="text-muted-foreground text-sm mb-6">
-                  Agenda ahora y da el primer paso para recuperar tu bienestar.
+                  El Dr. Garzón atiende a personas que llevan años buscando una solución. Cuéntanos tu caso — sin costo, sin presión.
                 </p>
 
                 <Button onClick={() => { setIsVisible(false); document.getElementById('agendar')?.scrollIntoView({ behavior: 'smooth' }); }} className="w-full h-12" size="lg">
-                  Agendar mi cita
+                  Quiero orientación por teléfono
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
