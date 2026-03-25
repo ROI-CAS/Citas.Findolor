@@ -3,14 +3,18 @@ import { X, HeartPulse, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function ExitIntentPopup() {
+  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    // Desktop: trigger on mouse leaving viewport
+    // Desktop only: trigger on mouse leaving viewport
+    if (isMobile) return;
+
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0 && !hasShown) {
         setIsVisible(true);
@@ -18,16 +22,15 @@ export function ExitIntentPopup() {
       }
     };
 
-    const isMobile = window.innerWidth < 768;
-
-    if (!isMobile) {
-      document.addEventListener("mouseleave", handleMouseLeave);
-    }
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [hasShown]);
+  }, [hasShown, isMobile]);
+
+  // Disabled on mobile — sticky bar handles contact actions
+  if (isMobile) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

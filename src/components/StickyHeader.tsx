@@ -24,7 +24,9 @@ export function StickyHeader() {
       const scrollY = window.scrollY;
       setIsVisible(scrollY > window.innerHeight * 0.5);
       setIsScrolled(scrollY > 50);
-      setScrolledDown(scrollY > lastY && scrollY > 100);
+      if (scrollY > 100) {
+        setScrolledDown(scrollY > lastY);
+      }
       lastY = scrollY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });

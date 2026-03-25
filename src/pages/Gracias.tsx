@@ -5,7 +5,7 @@ import confetti from "canvas-confetti";
 import { CheckCircle, Phone, MapPin, ArrowLeft, Clock, PhoneCall, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import findolorLogo from "@/assets/findolor-logo.png";
-import drGarzonImage from "@/assets/dr-garzon.png";
+import drGarzonImage from "@/assets/dr-garzon.webp";
 
 declare global {
   interface Window {

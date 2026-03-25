@@ -26,7 +26,9 @@ export function MobileStickyCTA() {
     let lastY = window.scrollY;
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setScrolledDown(scrollY > lastY && scrollY > 100);
+      if (scrollY > 100) {
+        setScrolledDown(scrollY > lastY);
+      }
       lastY = scrollY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
