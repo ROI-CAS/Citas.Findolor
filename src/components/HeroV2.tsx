@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Shield, Clock, Award, ChevronDown, Phone } from "lucide-react";
 import { BookingTabs } from "./BookingTabs";
 import { TopContactBar } from "./TopContactBar";
-import heroImage from "@/assets/hero-findolor-bg.jpg";
-import heroImageMobile from "@/assets/hero-findolor-mobile.jpg";
+
+// Hero images in public/ so they can be preloaded in index.html (LCP optimization)
+const heroImage = "/images/hero-findolor-bg.jpg";
+const heroImageMobile = "/images/hero-findolor-mobile.jpg";
 const logo = "/images/findolor-logo.webp";
 const trustPoints = [{
   icon: Shield,
@@ -28,24 +30,16 @@ export function HeroV2() {
       <div className="absolute inset-0 z-0">
         <picture>
           <source media="(max-width: 768px)" srcSet={heroImageMobile} />
-          <img src={heroImage} alt="Paciente aliviado" className="w-full h-full object-cover" fetchPriority="high" />
+          <img src={heroImage} alt="Paciente aliviado" className="w-full h-full object-cover" fetchPriority="high" decoding="sync" width="1440" height="900" />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332]/95 via-[#1a2332]/80 to-[#1a2332]/60" />
       </div>
 
       <div className="container relative z-10 py-6 lg:py-8 min-h-screen flex flex-col pt-24 lg:pt-32">
-        {/* Header - Now positioned absolute or flex */}
-        <motion.header initial={{
-        opacity: 0,
-        y: -20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.5
-      }} className="absolute top-6 lg:top-8 left-4 lg:left-8 z-50">
-          <img src={logo} alt="Findolor" className="w-[160px] md:w-[190px] h-auto brightness-200" />
-        </motion.header>
+        {/* Header */}
+        <header className="absolute top-6 lg:top-8 left-4 lg:left-8 z-50">
+          <img src={logo} alt="Findolor" className="w-[160px] md:w-[190px] h-auto brightness-200" width="190" height="57" />
+        </header>
 
         {/* Main Content */}
         <div className="flex-1 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mt-8 lg:mt-4">
