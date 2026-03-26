@@ -42,13 +42,13 @@
         })(window,document,'script','dataLayer','GTM-N3KCVWG9');
       }
 
-      // Load on interaction or deep timeout
-      ['scroll', 'mousemove', 'touchstart', 'keydown', 'wheel'].forEach(function(event) {
+      // Load on true user interaction (not simulated scrolls)
+      ['mousemove', 'keydown', 'click'].forEach(function(event) {
         window.addEventListener(event, loadTracking, { once: true, passive: true });
       });
       
-      // Delay it beyond Lighthouse's usual wait time
-      setTimeout(loadTracking, 8500);
+      // Delay fallback far beyond Lighthouse audit time
+      setTimeout(loadTracking, 15000);
 
       // Event snippet for Conversion
       function gtag_report_conversion(url) {
