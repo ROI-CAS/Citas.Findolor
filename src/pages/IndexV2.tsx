@@ -4,7 +4,6 @@ import { Phone } from "lucide-react";
 import { HeroV2 } from "@/components/HeroV2";
 import { TrustBadges } from "@/components/TrustBadges";
 import { StickyHeader } from "@/components/StickyHeader";
-import { BookingTabs } from "@/components/BookingTabs";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 // Lazy load below-fold components
@@ -20,12 +19,13 @@ const ClickToCallButton = lazy(() => import("@/components/ClickToCallButton").th
 const LiveCounter = lazy(() => import("@/components/LiveCounter").then(m => ({ default: m.LiveCounter })));
 const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup").then(m => ({ default: m.ExitIntentPopup })));
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton").then(m => ({ default: m.WhatsAppButton })));
+const BottomBookingTabs = lazy(() =>
+  import("@/components/BookingTabs").then(m => ({
+    default: () => <m.BookingTabs formSource="booking-section" />,
+  }))
+);
 
 const SectionFallback = () => <div className="py-20" />;
-
-function BottomBookingTabs() {
-  return <BookingTabs formSource="booking-section" />;
-}
 
 const IndexV2 = () => {
   const { hash } = useLocation();

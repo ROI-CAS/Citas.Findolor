@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preload LCP hero images -->
+    <!-- Preload LCP hero images & logo (before React boots) -->
+    <link rel="preload" as="image" href="/images/findolor-logo.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/hero-findolor-mobile.jpg" media="(max-width: 768px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/hero-findolor-bg.jpg" media="(min-width: 769px)" fetchpriority="high" />
 
     <!-- DNS Prefetch & Preconnect for third-party origins -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <!-- Google Fonts — non-blocking (evita render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

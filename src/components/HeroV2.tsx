@@ -37,7 +37,7 @@ export function HeroV2() {
       <div className="container relative z-10 py-6 lg:py-8 min-h-screen flex flex-col pt-24 lg:pt-32">
         {/* Header */}
         <header className="absolute top-6 lg:top-8 left-4 lg:left-8 z-50">
-          <img src={logo} alt="Findolor" className="w-[160px] md:w-[190px] h-auto brightness-200" width="190" height="57" />
+          <img src={logo} alt="Findolor" className="w-[160px] md:w-[190px] h-auto brightness-200" width="190" height="57" fetchPriority="high" />
         </header>
 
         {/* Main Content */}
