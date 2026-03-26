@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.citasfindolor.com)",
+      "Bash(node -e \"const sharp = require\\(''sharp''\\); sharp\\(''./src/assets/dr-garzon.png''\\).resize\\(400\\).webp\\({ quality: 80 }\\).toFile\\(''./src/assets/dr-garzon.webp''\\).then\\(i => console.log\\(''OK'', i\\)\\).catch\\(e => console.log\\(''NO sharp:'', e.message\\)\\)\")",
+      "Bash(where ffmpeg:*)",
+      "Bash(node -e \":*)",
+      "Bash(cp src/assets/hero-relief-opt.jpg src/assets/hero-relief.jpg)",
+      "Bash(rm src/assets/hero-relief-opt.jpg)",
+      "Bash(cp src/assets/hero-findolor-bg.jpg public/images/hero-findolor-bg.jpg)",
+      "Bash(cp src/assets/hero-findolor-mobile.jpg public/images/hero-findolor-mobile.jpg)",
+      "Bash(npm run:*)",
+      "Bash(mv public/images/hero-findolor-mobile-new.jpg public/images/hero-findolor-mobile.jpg)",
+      "Bash(mv src/assets/video-thumbnail-new.jpg src/assets/video-thumbnail.jpg)",
+      "Bash(rm public/images/findolor-logo-new.webp)",
+      "Bash(grep -rn \"from \"\"framer-motion\"\"\\\\|from ''framer-motion''\" \"e:/Pagina CitasFindolor/src/components/StickyHeader.tsx\" \"e:/Pagina CitasFindolor/src/components/TrustBadges.tsx\" \"e:/Pagina CitasFindolor/src/components/TopContactBar.tsx\")",
+      "Bash(grep -c \"vendor-motion\" \"e:/Pagina CitasFindolor/dist/assets/index-\"*.js)",
+      "Bash(grep -rn \"from \"\"framer-motion\"\"\\\\|from ''framer-motion''\" \"e:/Pagina CitasFindolor/src/pages/NotFound.tsx\" \"e:/Pagina CitasFindolor/src/context/\")",
+      "Bash(grep -rn \"from \"\"framer-motion\"\"\\\\|from ''framer-motion''\" \"e:/Pagina CitasFindolor/src/components/TopContactBar.tsx\" \"e:/Pagina CitasFindolor/src/components/BookingTabs.tsx\")",
+      "Bash(grep -rn \"vendor-motion\" \"e:/Pagina CitasFindolor/dist/assets/index-\"*.js)",
+      "Bash(grep -o \".\\\\{0,80\\\\}vendor-motion.\\\\{0,50\\\\}\" \"/e/Pagina CitasFindolor/dist/assets/index-D4NGEN4y.js\")",
+      "Bash(grep -o \".\\\\{0,200\\\\}import{j as a}from.\\\\{0,200\\\\}\" \"/e/Pagina CitasFindolor/dist/assets/index-D4NGEN4y.js\")",
+      "Bash(grep -o \"Y=[^,;]\\\\{0,100\\\\}\" \"/e/Pagina CitasFindolor/dist/assets/vendor-motion-C707MdwO.js\")",
+      "Bash(grep -o \"\\\\ba\\\\.[a-zA-Z]\\\\{1,20\\\\}\" \"/e/Pagina CitasFindolor/dist/assets/index-D4NGEN4y.js\")",
+      "Bash(grep -o \"Y=.\\\\{0,200\\\\}\" \"/e/Pagina CitasFindolor/dist/assets/vendor-motion-C707MdwO.js\")"
+    ]
+  }
+}

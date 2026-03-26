@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Award, BadgeCheck } from "lucide-react";
 
 const badges = [
@@ -22,12 +21,7 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="flex flex-wrap justify-center gap-4 py-6"
-    >
+    <div className="flex flex-wrap justify-center gap-4 py-6">
       {badges.map((badge, index) => (
         <div
           key={index}
@@ -37,6 +31,6 @@ export function TrustBadges() {
           <span>{badge.text}</span>
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }

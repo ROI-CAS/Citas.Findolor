@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Shield, Clock, Award, ChevronDown, Phone } from "lucide-react";
 import { BookingTabs } from "./BookingTabs";
 import { TopContactBar } from "./TopContactBar";
@@ -44,15 +43,7 @@ export function HeroV2() {
         {/* Main Content */}
         <div className="flex-1 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mt-8 lg:mt-4">
           {/* Left - Messaging */}
-          <motion.div initial={{
-          opacity: 0,
-          x: -30
-        }} animate={{
-          opacity: 1,
-          x: 0
-        }} transition={{
-          duration: 0.6
-        }} className="text-white mt-12 lg:mt-24">
+          <div className="text-white mt-12 lg:mt-24 animate-hero-left">
 
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               ¿Llevas años con dolor crónico sin encontrar solución?{" "}
@@ -68,30 +59,16 @@ export function HeroV2() {
 
             {/* Trust Points */}
             <div className="flex flex-wrap gap-6 mb-10">
-              {trustPoints.map((point, index) => <motion.div key={index} initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.4,
-              delay: 0.3 + index * 0.1
-            }} className="flex items-center gap-2">
+              {trustPoints.map((point, index) => <div key={index} className="flex items-center gap-2 animate-hero-trust" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                     <point.icon className="w-5 h-5 text-secondary" />
                   </div>
                   <span className="text-sm text-white/90">{point.text}</span>
-                </motion.div>)}
+                </div>)}
             </div>
 
             {/* Insurance Banner */}
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="pt-6 border-t border-white/10 mb-8 lg:mb-12"
-            >
+            <div className="pt-6 border-t border-white/10 mb-8 lg:mb-12 animate-hero-trust" style={{ animationDelay: "0.6s" }}>
               <p className="text-base font-medium text-white/80 mb-4 lowercase">
                 en convenio con aseguradoras
               </p>
@@ -101,13 +78,14 @@ export function HeroV2() {
                 <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="w-full h-auto max-h-10 md:max-h-[55px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
                 <img src="/images/insurers/sura.png" alt="Sura" className="w-full h-auto max-h-8 md:max-h-[45px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Mobile-only: scroll to form button */}
           <div className="md:hidden col-span-full -mt-6 mb-1 flex justify-center">
             <button
               onClick={() => document.getElementById("booking-form-hero")?.scrollIntoView({ behavior: "smooth" })}
+              aria-label="Ir al formulario de cita"
               className="flex items-center gap-2 text-white/80 text-sm font-medium border border-white/30 rounded-full px-5 py-2.5 backdrop-blur-sm hover:bg-white/10 transition-colors active:scale-95"
             >
               Ver formulario de cita ↓
@@ -125,17 +103,8 @@ export function HeroV2() {
           </div>
 
           {/* Right - Form with Glassmorphism */}
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.6,
-          delay: 0.2
-        }} className="relative z-20 mt-4 md:mt-0">
-            
+          <div className="relative z-20 mt-4 md:mt-0 animate-hero-right">
+
             <TopContactBar />
 
             <div className="relative rounded-3xl p-5 md:p-7 shadow-2xl overflow-hidden" style={{
@@ -161,19 +130,13 @@ export function HeroV2() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.button onClick={scrollToContent} initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} transition={{
-        delay: 1
-      }} className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors" aria-label="Scroll down">
+        <button onClick={scrollToContent} aria-label="Desplazarse hacia abajo" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors animate-hero-trust" style={{ animationDelay: "1s" }}>
           <ChevronDown className="w-8 h-8 animate-bounce" />
-        </motion.button>
+        </button>
       </div>
     </section>;
 }

@@ -67,6 +67,7 @@ export function MobileStickyCTA() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Contactar por WhatsApp"
             className="flex items-center justify-center gap-2 bg-[#25D366] text-white rounded-2xl px-4 py-4 font-bold text-base shadow-md active:scale-95 transition-transform flex-shrink-0"
           >
             <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white flex-shrink-0">

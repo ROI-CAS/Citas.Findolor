@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { User, Phone, CheckCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +23,7 @@ interface MultiStepFormProps {
 export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
   const navigate = useNavigate();
   const { registrarConsulta } = useAppointments();
+  const fid = formSource; // unique prefix for field IDs
   
   const [formData, setFormData] = useState({
     nombre: "",
@@ -69,20 +69,16 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
                      formData.acceptedPolicies;
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="w-full mb-2"
-    >
+    <div className="w-full mb-2 animate-hero-trust">
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {/* Fila 1: Nombre y Teléfono */}
           <div className="space-y-1.5">
-            <Label htmlFor="nombre" className="flex items-center gap-2 text-foreground font-semibold text-sm">
+            <Label htmlFor={`${fid}-nombre`} className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <User className="w-4 h-4 text-primary" /> Nombre completo <span className="text-destructive">*</span>
             </Label>
             <Input
-              id="nombre"
+              id={`${fid}-nombre`}
               value={formData.nombre}
               onChange={e => setFormData(prev => ({ ...prev, nombre: e.target.value }))}
               placeholder="¿Cómo te llamas?"
@@ -92,11 +88,11 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="telefono" className="flex items-center gap-2 text-foreground font-semibold text-sm">
+            <Label htmlFor={`${fid}-telefono`} className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <Phone className="w-4 h-4 text-primary" /> Teléfono / Celular <span className="text-destructive">*</span>
             </Label>
             <Input
-              id="telefono"
+              id={`${fid}-telefono`}
               type="tel"
               value={formData.telefono}
               onChange={e => setFormData(prev => ({ ...prev, telefono: e.target.value }))}
@@ -108,11 +104,11 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
           {/* Fila 2: Email (100% width) */}
           <div className="space-y-1.5 md:col-span-2">
-            <Label htmlFor="email" className="flex items-center gap-2 text-foreground font-semibold text-sm">
+            <Label htmlFor={`${fid}-email`} className="flex items-center gap-2 text-foreground font-semibold text-sm">
               <Mail className="w-4 h-4 text-primary" /> Correo electrónico <span className="text-destructive">*</span>
             </Label>
             <Input
-              id="email"
+              id={`${fid}-email`}
               type="email"
               value={formData.email}
               onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -124,12 +120,12 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
 
           {/* Fila 3: Solo seguro médico (especialidad se recoge por teléfono) */}
           <div className="space-y-1.5 md:col-span-2">
-            <Label htmlFor="entidad" className="flex items-center gap-2 text-foreground font-semibold text-sm">
+            <Label htmlFor={`${fid}-entidad`} className="flex items-center gap-2 text-foreground font-semibold text-sm">
               ¿Tienes seguro médico? <span className="text-destructive">*</span>
             </Label>
             <div className="relative">
               <select
-                id="entidad"
+                id={`${fid}-entidad`}
                 value={formData.entidad}
                 onChange={e => setFormData(prev => ({ ...prev, entidad: e.target.value }))}
                 className="flex h-14 md:h-12 w-full items-center justify-between rounded-lg border border-input bg-background/60 px-3 py-2 text-base shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring focus:border-primary transition-colors appearance-none cursor-pointer"
@@ -148,13 +144,13 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
         </div>
 
         <div className="flex items-start space-x-3 pt-2">
-          <Checkbox 
-            id="policies" 
-            checked={formData.acceptedPolicies} 
+          <Checkbox
+            id={`${fid}-policies`}
+            checked={formData.acceptedPolicies}
             onCheckedChange={checked => setFormData(prev => ({ ...prev, acceptedPolicies: !!checked }))}
-            className="mt-1" 
+            className="mt-1"
           />
-          <Label htmlFor="policies" className="text-xs text-muted-foreground leading-relaxed cursor-pointer pr-2 border-none">
+          <Label htmlFor={`${fid}-policies`} className="text-xs text-muted-foreground leading-relaxed cursor-pointer pr-2 border-none">
             Acepto las <a href="https://www.findolor.com/manual-de-politicas-de-tratamiento/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Políticas de tratamiento de datos</a>
           </Label>
         </div>
@@ -173,6 +169,6 @@ export function MultiStepForm({ formSource = "hero" }: MultiStepFormProps) {
           )}
         </Button>
       </form>
-    </motion.div>
+    </div>
   );
 }

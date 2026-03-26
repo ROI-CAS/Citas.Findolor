@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-react": ["react", "react-dom", "react-router-dom", "react/jsx-runtime"],
           "vendor-motion": ["framer-motion"],
           "vendor-ui": ["@radix-ui/react-tabs", "@radix-ui/react-accordion", "@radix-ui/react-dialog"],
         },

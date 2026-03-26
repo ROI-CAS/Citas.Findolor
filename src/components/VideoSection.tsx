@@ -42,6 +42,7 @@ export function VideoSection() {
                       onClick={() => setIsPlaying(true)}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
+                      aria-label="Reproducir video institucional Findolor"
                       className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl group"
                     >
                       <Play className="w-8 h-8 text-primary ml-1 group-hover:scale-110 transition-transform" />
