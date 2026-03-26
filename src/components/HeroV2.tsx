@@ -73,10 +73,10 @@ export function HeroV2() {
                 en convenio con aseguradoras
               </p>
               <div className="grid grid-cols-4 items-center gap-4 md:gap-8 lg:gap-10">
-                <img src="/images/insurers/allianz.png" alt="Allianz" className="w-full h-auto max-h-9 md:max-h-[50px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Allianz" />
-                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" className="w-full h-auto max-h-11 md:max-h-[65px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Bolívar" />
-                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" className="w-full h-auto max-h-10 md:max-h-[55px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
-                <img src="/images/insurers/sura.png" alt="Sura" className="w-full h-auto max-h-8 md:max-h-[45px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
+                <img src="/images/insurers/allianz.png" alt="Allianz" width="200" height="60" className="w-full h-auto max-h-9 md:max-h-[50px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Allianz" />
+                <img src="/images/insurers/seguros-bolivar.png" alt="Seguros Bolívar" width="200" height="60" className="w-full h-auto max-h-11 md:max-h-[65px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Bolívar" />
+                <img src="/images/insurers/seguros-alfa.png" alt="Seguros Alfa" width="200" height="60" className="w-full h-auto max-h-10 md:max-h-[55px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Seguros Alfa" />
+                <img src="/images/insurers/sura.png" alt="Sura" width="200" height="60" className="w-full h-auto max-h-8 md:max-h-[45px] object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" title="Sura" />
               </div>
             </div>
           </div>
