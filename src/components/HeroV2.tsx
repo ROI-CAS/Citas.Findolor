@@ -122,7 +122,7 @@ export function HeroV2() {
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                     <Phone className="w-4 h-4 text-primary" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">Agenda tu valoración médica</h3>
+                  <h2 className="text-lg font-bold text-foreground">Agenda tu valoración médica</h2>
                 </div>
                 <BookingTabs formSource="hero" />
                 <p className="text-center text-xs text-muted-foreground mt-2">

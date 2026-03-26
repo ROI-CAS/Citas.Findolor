@@ -26,8 +26,8 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
           onClick={() => setActiveTab("call")}
           className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
             activeTab === "call"
-              ? "bg-primary text-primary-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground border border-border"
+              ? "bg-primary text-[#0a2e3f] shadow-sm"
+              : "text-slate-600 hover:text-slate-900 border border-border"
           }`}
         >
           <Phone className="w-4 h-4" />
@@ -38,8 +38,8 @@ export function BookingTabs({ formSource }: BookingTabsProps) {
           onClick={() => setActiveTab("calendar")}
           className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
             activeTab === "calendar"
-              ? "bg-primary text-primary-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground border border-border"
+              ? "bg-primary text-[#0a2e3f] shadow-sm"
+              : "text-slate-600 hover:text-slate-900 border border-border"
           }`}
         >
           <CalendarDays className="w-4 h-4" />

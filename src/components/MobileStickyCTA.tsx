@@ -56,7 +56,7 @@ export function MobileStickyCTA() {
           {/* Primary: Call */}
           <a
             href="tel:+573186912799"
-            className="flex-1 flex items-center justify-center gap-2.5 bg-primary text-primary-foreground rounded-2xl py-4 font-bold text-base shadow-md active:scale-95 transition-transform min-w-0"
+            className="flex-1 flex items-center justify-center gap-2.5 bg-primary text-[#0a2e3f] rounded-2xl py-4 font-bold text-base shadow-md active:scale-95 transition-transform min-w-0"
           >
             <Phone className="w-5 h-5 flex-shrink-0" />
             <span className="truncate">Llamar ahora</span>
